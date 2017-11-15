@@ -5,3 +5,37 @@
 .mainFxmlClass {
 
 }
+.bodyOnlyColor{
+    -fx-background-color: #82BBB2;
+    -fx-background-size: 100%;
+    -fx-background-position: bottom;
+	
+}
+
+.headOnlyColor{
+    -fx-background-color: #1C6B72;
+    -fx-background-size: 100%;
+    -fx-background-position: bottom;
+    -fx-text-fill: white;
+	
+}
+
+.sideBarOnlyColor{
+    -fx-background-color: #2B4039;
+    -fx-background-size: 100%;
+    -fx-background-position: bottom;
+	
+}
+
+.menubtn{
+    -fx-background-color: #2B4039;
+    -fx-background-size: 20%;
+    -fx-background-position: left;
+    -fx-background-repeat: no-repeat;
+    -fx-text-fill: #EAD86A;
+    -fx-cursor: hand;
+}
+
+.whiteFont{
+    -fx-text-fill: white;
+}
