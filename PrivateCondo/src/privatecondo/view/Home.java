@@ -27,12 +27,7 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        userHome = new javax.swing.JPanel();
         userPrivateCondo = new javax.swing.JPanel();
-        jPanelLeftMenu = new javax.swing.JPanel();
-        jButtonRoomService = new javax.swing.JButton();
-        jButtonHome = new javax.swing.JButton();
-        jButtonReport = new javax.swing.JButton();
         jPanelHeadMenu = new javax.swing.JPanel();
         jLabelHome = new javax.swing.JLabel();
         jLabelUserProfile = new javax.swing.JLabel();
@@ -40,6 +35,11 @@ public class Home extends javax.swing.JFrame {
         jLabelRoomSV = new javax.swing.JLabel();
         jLabelReportList = new javax.swing.JLabel();
         jLabelReport1 = new javax.swing.JLabel();
+        jPanelLeftMenu = new javax.swing.JPanel();
+        jButtonRoomService = new javax.swing.JButton();
+        jButtonHome = new javax.swing.JButton();
+        jButtonReport = new javax.swing.JButton();
+        user = new javax.swing.JPanel();
         jPanelReport = new javax.swing.JPanel();
         jLabelReportDescription = new javax.swing.JLabel();
         jLabelReportTopic = new javax.swing.JLabel();
@@ -60,37 +60,13 @@ public class Home extends javax.swing.JFrame {
         jComboBoxTime = new javax.swing.JComboBox<>();
         jButtonSelect = new javax.swing.JButton();
         jPanelReportProList = new javax.swing.JPanel();
+        adminPrivateCondo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        userHome.setBackground(new java.awt.Color(130, 187, 178));
-        userHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        userPrivateCondo.setBackground(new java.awt.Color(130, 187, 178));
         userPrivateCondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelLeftMenu.setBackground(new java.awt.Color(43, 64, 57));
-        jPanelLeftMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButtonRoomService.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
-        jButtonRoomService.setForeground(new java.awt.Color(234, 216, 106));
-        jButtonRoomService.setText("Room Service");
-        jButtonRoomService.setContentAreaFilled(false);
-        jPanelLeftMenu.add(jButtonRoomService, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 180, 40));
-
-        jButtonHome.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
-        jButtonHome.setForeground(new java.awt.Color(234, 216, 106));
-        jButtonHome.setText("Home");
-        jButtonHome.setContentAreaFilled(false);
-        jPanelLeftMenu.add(jButtonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 180, 40));
-
-        jButtonReport.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
-        jButtonReport.setForeground(new java.awt.Color(234, 216, 106));
-        jButtonReport.setText("Report");
-        jButtonReport.setContentAreaFilled(false);
-        jPanelLeftMenu.add(jButtonReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 180, 40));
-
-        userPrivateCondo.add(jPanelLeftMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 490));
 
         jPanelHeadMenu.setBackground(new java.awt.Color(28, 107, 114));
         jPanelHeadMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -126,6 +102,31 @@ public class Home extends javax.swing.JFrame {
 
         userPrivateCondo.add(jPanelHeadMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 550, 120));
 
+        jPanelLeftMenu.setBackground(new java.awt.Color(43, 64, 57));
+        jPanelLeftMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonRoomService.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
+        jButtonRoomService.setForeground(new java.awt.Color(234, 216, 106));
+        jButtonRoomService.setText("Room Service");
+        jButtonRoomService.setContentAreaFilled(false);
+        jPanelLeftMenu.add(jButtonRoomService, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 180, 40));
+
+        jButtonHome.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
+        jButtonHome.setForeground(new java.awt.Color(234, 216, 106));
+        jButtonHome.setText("Home");
+        jButtonHome.setContentAreaFilled(false);
+        jPanelLeftMenu.add(jButtonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 180, 40));
+
+        jButtonReport.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
+        jButtonReport.setForeground(new java.awt.Color(234, 216, 106));
+        jButtonReport.setText("Report");
+        jButtonReport.setContentAreaFilled(false);
+        jPanelLeftMenu.add(jButtonReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 180, 40));
+
+        userPrivateCondo.add(jPanelLeftMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 490));
+
+        user.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanelReport.setBackground(new java.awt.Color(130, 187, 178));
         jPanelReport.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -157,11 +158,11 @@ public class Home extends javax.swing.JFrame {
         jButtonSendReport.setText("Send");
         jPanelReport.add(jButtonSendReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
 
-        userPrivateCondo.add(jPanelReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
+        user.add(jPanelReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
 
         jPanelNewsHome.setBackground(new java.awt.Color(130, 187, 178));
         jPanelNewsHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        userPrivateCondo.add(jPanelNewsHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
+        user.add(jPanelNewsHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
 
         jPanelRoomSV.setBackground(new java.awt.Color(130, 187, 178));
         jPanelRoomSV.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -203,15 +204,16 @@ public class Home extends javax.swing.JFrame {
         });
         jPanelRoomSV.add(jButtonSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 130, 30));
 
-        userPrivateCondo.add(jPanelRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
+        user.add(jPanelRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
 
         jPanelReportProList.setBackground(new java.awt.Color(130, 187, 178));
         jPanelReportProList.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        userPrivateCondo.add(jPanelReportProList, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
+        user.add(jPanelReportProList, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
 
-        userHome.add(userPrivateCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
+        userPrivateCondo.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
 
-        getContentPane().add(userHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
+        getContentPane().add(userPrivateCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
+        getContentPane().add(adminPrivateCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -256,6 +258,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel adminPrivateCondo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonHome;
     private javax.swing.JButton jButtonListReport;
@@ -287,7 +290,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneReportDes;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldTopic;
-    private javax.swing.JPanel userHome;
+    private javax.swing.JPanel user;
     private javax.swing.JPanel userPrivateCondo;
     // End of variables declaration//GEN-END:variables
 }
