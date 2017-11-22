@@ -114,7 +114,28 @@ public class DBManagement {
         dbm.createConnection();
         User activeuser = dbm.login("jillion", "1234");
         System.out.println(activeuser);
+//        ArrayList<News> list = dbm.queryNews();
+//        for(int i=0;i<list.size();i++){
+//            System.out.println(list.toArray()[i]);
+//            
+//        }
         dbm.disconnect();
+        
+        
+    }
+    
+    public ArrayList<News> queryNews() throws SQLException{
+         ArrayList<News> news = new ArrayList<News>(); 
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM news"); 
+        while(rs.next()){
+            News n = new News();
+            n.setTopic(rs.getString("news_topic"));
+            n.setDescription(rs.getString("news_description"));
+            n.setAnnounceDate(rs.getDate("announceDate"));
+            news.add(n);
+        }
+        return news;
     }
     /*public int insertItem(String itemName, String itemDesc,int ownerId,int itemCate,String date)
                 throws SQLException{ 
