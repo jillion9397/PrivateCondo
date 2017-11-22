@@ -76,5 +76,10 @@ public class News {
 //        }
 //        return result;
 //    }
+
+    @Override
+    public String toString() {
+        return "News{" + "NewsId=" + NewsId + ", topic=" + topic + ", description=" + description + ", announceDate=" + announceDate + ", db=" + db + '}';
+    }
     
 }
