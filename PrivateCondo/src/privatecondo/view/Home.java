@@ -16,6 +16,16 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        jPanelHeadMenu.setVisible(true);
+        jLabelRoomSV.setVisible(false);
+        jLabelReportList.setVisible(false);
+        jLabelReport1.setVisible(false);
+        jLabelHome.setVisible(true);
+        jPanelReport.setVisible(false);
+        jPanelNewsHome.setVisible(true);
+        jPanelRoomSV.setVisible(false);
+        jPanelReportProList.setVisible(false);
+        jPanelSelectRoomSV.setVisible(false);
     }
 
     /**
@@ -32,14 +42,22 @@ public class Home extends javax.swing.JFrame {
         jLabelHome = new javax.swing.JLabel();
         jLabelUserProfile = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabelRoomSV = new javax.swing.JLabel();
         jLabelReportList = new javax.swing.JLabel();
         jLabelReport1 = new javax.swing.JLabel();
+        jLabelRoomSV = new javax.swing.JLabel();
         jPanelLeftMenu = new javax.swing.JPanel();
         jButtonRoomService = new javax.swing.JButton();
         jButtonHome = new javax.swing.JButton();
         jButtonReport = new javax.swing.JButton();
         user = new javax.swing.JPanel();
+        jPanelSelectRoomSV = new javax.swing.JPanel();
+        jPanelRoomSV = new javax.swing.JPanel();
+        jLabelTime = new javax.swing.JLabel();
+        jComboBoxDate = new javax.swing.JComboBox<>();
+        jLabelDate = new javax.swing.JLabel();
+        jComboBoxTime = new javax.swing.JComboBox<>();
+        jButtonSelect = new javax.swing.JButton();
+        jPanelNewsHome = new javax.swing.JPanel();
         jPanelReport = new javax.swing.JPanel();
         jLabelReportDescription = new javax.swing.JLabel();
         jLabelReportTopic = new javax.swing.JLabel();
@@ -48,19 +66,15 @@ public class Home extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButtonListReport = new javax.swing.JButton();
         jButtonSendReport = new javax.swing.JButton();
-        jPanelNewsHome = new javax.swing.JPanel();
-        jPanelRoomSV = new javax.swing.JPanel();
-        jLabelYear = new javax.swing.JLabel();
-        jComboBoxYear = new javax.swing.JComboBox<>();
-        jLabelTime = new javax.swing.JLabel();
-        jComboBoxDate = new javax.swing.JComboBox<>();
-        jComboBoxMonth = new javax.swing.JComboBox<>();
-        jLabelMonth = new javax.swing.JLabel();
-        jLabelDate = new javax.swing.JLabel();
-        jComboBoxTime = new javax.swing.JComboBox<>();
-        jButtonSelect = new javax.swing.JButton();
         jPanelReportProList = new javax.swing.JPanel();
         adminPrivateCondo = new javax.swing.JPanel();
+        jPanelLeftMenuAdmin = new javax.swing.JPanel();
+        jButtonRoomService1 = new javax.swing.JButton();
+        jButtonHome1 = new javax.swing.JButton();
+        jButtonReport1 = new javax.swing.JButton();
+        jPanelHeadMenuAdmin = new javax.swing.JPanel();
+        jLabelUserProfileAdmin = new javax.swing.JLabel();
+        jButtonLogoutAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,11 +99,6 @@ public class Home extends javax.swing.JFrame {
         jButton1.setContentAreaFilled(false);
         jPanelHeadMenu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
 
-        jLabelRoomSV.setFont(new java.awt.Font("Quark", 1, 36)); // NOI18N
-        jLabelRoomSV.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelRoomSV.setText("Room Service");
-        jPanelHeadMenu.add(jLabelRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
-
         jLabelReportList.setFont(new java.awt.Font("Quark", 1, 36)); // NOI18N
         jLabelReportList.setForeground(new java.awt.Color(255, 255, 255));
         jLabelReportList.setText("Problems List");
@@ -99,6 +108,11 @@ public class Home extends javax.swing.JFrame {
         jLabelReport1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelReport1.setText("Report");
         jPanelHeadMenu.add(jLabelReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        jLabelRoomSV.setFont(new java.awt.Font("Quark", 1, 36)); // NOI18N
+        jLabelRoomSV.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelRoomSV.setText("Room Service");
+        jPanelHeadMenu.add(jLabelRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         userPrivateCondo.add(jPanelHeadMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 550, 120));
 
@@ -142,6 +156,42 @@ public class Home extends javax.swing.JFrame {
 
         user.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanelSelectRoomSV.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelSelectRoomSV.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        user.add(jPanelSelectRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
+
+        jPanelRoomSV.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelRoomSV.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelTime.setFont(new java.awt.Font("Leelawadee", 0, 16)); // NOI18N
+        jLabelTime.setText("Select Time");
+        jPanelRoomSV.add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
+
+        jComboBoxDate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelRoomSV.add(jComboBoxDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 240, 30));
+
+        jLabelDate.setFont(new java.awt.Font("Leelawadee", 0, 16)); // NOI18N
+        jLabelDate.setText("Select Day");
+        jPanelRoomSV.add(jLabelDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        jComboBoxTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelRoomSV.add(jComboBoxTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 240, 30));
+
+        jButtonSelect.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonSelect.setText("Select");
+        jButtonSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSelectActionPerformed(evt);
+            }
+        });
+        jPanelRoomSV.add(jButtonSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 130, 30));
+
+        user.add(jPanelRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
+
+        jPanelNewsHome.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelNewsHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        user.add(jPanelNewsHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
+
         jPanelReport.setBackground(new java.awt.Color(130, 187, 178));
         jPanelReport.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -167,6 +217,11 @@ public class Home extends javax.swing.JFrame {
         jButtonListReport.setBackground(new java.awt.Color(43, 64, 57));
         jButtonListReport.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButtonListReport.setText("Problems List");
+        jButtonListReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListReportActionPerformed(evt);
+            }
+        });
         jPanelReport.add(jButtonListReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
 
         jButtonSendReport.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -175,52 +230,6 @@ public class Home extends javax.swing.JFrame {
 
         user.add(jPanelReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
 
-        jPanelNewsHome.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelNewsHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        user.add(jPanelNewsHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
-
-        jPanelRoomSV.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelRoomSV.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelYear.setFont(new java.awt.Font("Leelawadee", 0, 16)); // NOI18N
-        jLabelYear.setText("Year");
-        jPanelRoomSV.add(jLabelYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
-
-        jComboBoxYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelRoomSV.add(jComboBoxYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 70, 30));
-
-        jLabelTime.setFont(new java.awt.Font("Leelawadee", 0, 16)); // NOI18N
-        jLabelTime.setText("Select Time");
-        jPanelRoomSV.add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
-
-        jComboBoxDate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelRoomSV.add(jComboBoxDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 70, 30));
-
-        jComboBoxMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelRoomSV.add(jComboBoxMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 70, 30));
-
-        jLabelMonth.setFont(new java.awt.Font("Leelawadee", 0, 16)); // NOI18N
-        jLabelMonth.setText("Month");
-        jPanelRoomSV.add(jLabelMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
-
-        jLabelDate.setFont(new java.awt.Font("Leelawadee", 0, 16)); // NOI18N
-        jLabelDate.setText("Select Date");
-        jPanelRoomSV.add(jLabelDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-
-        jComboBoxTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelRoomSV.add(jComboBoxTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 240, 30));
-
-        jButtonSelect.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonSelect.setText("Select");
-        jButtonSelect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSelectActionPerformed(evt);
-            }
-        });
-        jPanelRoomSV.add(jButtonSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 130, 30));
-
-        user.add(jPanelRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
-
         jPanelReportProList.setBackground(new java.awt.Color(130, 187, 178));
         jPanelReportProList.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         user.add(jPanelReportProList, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
@@ -228,6 +237,61 @@ public class Home extends javax.swing.JFrame {
         userPrivateCondo.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
 
         getContentPane().add(userPrivateCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
+
+        adminPrivateCondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelLeftMenuAdmin.setBackground(new java.awt.Color(43, 64, 57));
+        jPanelLeftMenuAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonRoomService1.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
+        jButtonRoomService1.setForeground(new java.awt.Color(234, 216, 106));
+        jButtonRoomService1.setText("Room Service");
+        jButtonRoomService1.setContentAreaFilled(false);
+        jButtonRoomService1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRoomService1ActionPerformed(evt);
+            }
+        });
+        jPanelLeftMenuAdmin.add(jButtonRoomService1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 180, 40));
+
+        jButtonHome1.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
+        jButtonHome1.setForeground(new java.awt.Color(234, 216, 106));
+        jButtonHome1.setText("Home");
+        jButtonHome1.setContentAreaFilled(false);
+        jButtonHome1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHome1ActionPerformed(evt);
+            }
+        });
+        jPanelLeftMenuAdmin.add(jButtonHome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 180, 40));
+
+        jButtonReport1.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
+        jButtonReport1.setForeground(new java.awt.Color(234, 216, 106));
+        jButtonReport1.setText("Report");
+        jButtonReport1.setContentAreaFilled(false);
+        jButtonReport1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReport1ActionPerformed(evt);
+            }
+        });
+        jPanelLeftMenuAdmin.add(jButtonReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 180, 40));
+
+        adminPrivateCondo.add(jPanelLeftMenuAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 490));
+
+        jPanelHeadMenuAdmin.setBackground(new java.awt.Color(28, 107, 114));
+        jPanelHeadMenuAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelUserProfileAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/privatecondo/view/Picture/profile-user.png"))); // NOI18N
+        jPanelHeadMenuAdmin.add(jLabelUserProfileAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
+
+        jButtonLogoutAdmin.setFont(new java.awt.Font("Quark", 1, 12)); // NOI18N
+        jButtonLogoutAdmin.setForeground(new java.awt.Color(234, 216, 106));
+        jButtonLogoutAdmin.setText("LOGOUT");
+        jButtonLogoutAdmin.setContentAreaFilled(false);
+        jPanelHeadMenuAdmin.add(jButtonLogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
+
+        adminPrivateCondo.add(jPanelHeadMenuAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 550, 120));
+
         getContentPane().add(adminPrivateCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
 
         pack();
@@ -235,10 +299,21 @@ public class Home extends javax.swing.JFrame {
 
     private void jButtonSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectActionPerformed
         // TODO add your handling code here:
+        jPanelSelectRoomSV.setVisible(true);
+        jPanelHeadMenu.setVisible(true);
+        jLabelRoomSV.setVisible(true);
+        jLabelReportList.setVisible(false);
+        jLabelReport1.setVisible(false);
+        jLabelHome.setVisible(false);
+        jPanelReport.setVisible(false);
+        jPanelNewsHome.setVisible(false);
+        jPanelRoomSV.setVisible(false);
+        jPanelReportProList.setVisible(false);
     }//GEN-LAST:event_jButtonSelectActionPerformed
 
     private void jButtonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHomeActionPerformed
         // TODO add your handling code here:
+        jPanelHeadMenu.setVisible(true);
         jLabelRoomSV.setVisible(false);
         jLabelReportList.setVisible(false);
         jLabelReport1.setVisible(false);
@@ -247,6 +322,7 @@ public class Home extends javax.swing.JFrame {
         jPanelNewsHome.setVisible(true);
         jPanelRoomSV.setVisible(false);
         jPanelReportProList.setVisible(false);
+        jPanelSelectRoomSV.setVisible(false);
     }//GEN-LAST:event_jButtonHomeActionPerformed
 
     private void jButtonReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportActionPerformed
@@ -259,6 +335,7 @@ public class Home extends javax.swing.JFrame {
         jPanelNewsHome.setVisible(false);
         jPanelRoomSV.setVisible(false);
         jPanelReportProList.setVisible(false);
+        jPanelSelectRoomSV.setVisible(false);
     }//GEN-LAST:event_jButtonReportActionPerformed
 
     private void jButtonRoomServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRoomServiceActionPerformed
@@ -271,7 +348,33 @@ public class Home extends javax.swing.JFrame {
         jPanelNewsHome.setVisible(false);
         jPanelRoomSV.setVisible(true);
         jPanelReportProList.setVisible(false);
+        jPanelSelectRoomSV.setVisible(false);
     }//GEN-LAST:event_jButtonRoomServiceActionPerformed
+
+    private void jButtonListReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListReportActionPerformed
+        // TODO add your handling code here:
+        jLabelRoomSV.setVisible(false);
+        jLabelReportList.setVisible(true);
+        jLabelReport1.setVisible(false);
+        jLabelHome.setVisible(false);
+        jPanelReport.setVisible(false);
+        jPanelNewsHome.setVisible(false);
+        jPanelRoomSV.setVisible(false);
+        jPanelReportProList.setVisible(true);
+        jPanelSelectRoomSV.setVisible(false);
+    }//GEN-LAST:event_jButtonListReportActionPerformed
+
+    private void jButtonRoomService1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRoomService1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRoomService1ActionPerformed
+
+    private void jButtonHome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHome1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonHome1ActionPerformed
+
+    private void jButtonReport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReport1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReport1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,18 +415,19 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel adminPrivateCondo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonHome;
+    private javax.swing.JButton jButtonHome1;
     private javax.swing.JButton jButtonListReport;
+    private javax.swing.JButton jButtonLogoutAdmin;
     private javax.swing.JButton jButtonReport;
+    private javax.swing.JButton jButtonReport1;
     private javax.swing.JButton jButtonRoomService;
+    private javax.swing.JButton jButtonRoomService1;
     private javax.swing.JButton jButtonSelect;
     private javax.swing.JButton jButtonSendReport;
     private javax.swing.JComboBox<String> jComboBoxDate;
-    private javax.swing.JComboBox<String> jComboBoxMonth;
     private javax.swing.JComboBox<String> jComboBoxTime;
-    private javax.swing.JComboBox<String> jComboBoxYear;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelHome;
-    private javax.swing.JLabel jLabelMonth;
     private javax.swing.JLabel jLabelReport1;
     private javax.swing.JLabel jLabelReportDescription;
     private javax.swing.JLabel jLabelReportList;
@@ -331,13 +435,16 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelRoomSV;
     private javax.swing.JLabel jLabelTime;
     private javax.swing.JLabel jLabelUserProfile;
-    private javax.swing.JLabel jLabelYear;
+    private javax.swing.JLabel jLabelUserProfileAdmin;
     private javax.swing.JPanel jPanelHeadMenu;
+    private javax.swing.JPanel jPanelHeadMenuAdmin;
     private javax.swing.JPanel jPanelLeftMenu;
+    private javax.swing.JPanel jPanelLeftMenuAdmin;
     private javax.swing.JPanel jPanelNewsHome;
     private javax.swing.JPanel jPanelReport;
     private javax.swing.JPanel jPanelReportProList;
     private javax.swing.JPanel jPanelRoomSV;
+    private javax.swing.JPanel jPanelSelectRoomSV;
     private javax.swing.JScrollPane jScrollPaneReportDes;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldTopic;
