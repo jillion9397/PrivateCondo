@@ -5,6 +5,8 @@
  */
 package privatecondo.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author poom029
@@ -18,7 +20,7 @@ public class User {
     private String lname;
     private String username;
     private String password;
-    private Room[] roomOwn;
+    private ArrayList<Room> roomOwn;
     private Room roomLive;
     private String phone;
     private String line;
@@ -29,7 +31,7 @@ public class User {
     public User() {
     }
 
-    public User(int userId, String fname, String lname, String username, String password, Room[] roomOwn, Room roomLive, String phone, String line, int userType, String userTypeStr) {
+    public User(int userId, String fname, String lname, String username, String password, ArrayList<Room> roomOwn, Room roomLive, String phone, String line, int userType, String userTypeStr) {
         this.userId = userId;
         this.fname = fname;
         this.lname = lname;
@@ -42,8 +44,6 @@ public class User {
         this.userType = userType;
         this.userTypeStr = userTypeStr;
     }
-
-    
 
     public int getUserId() {
         return userId;
@@ -85,6 +85,22 @@ public class User {
         this.password = password;
     }
 
+    public ArrayList<Room> getRoomOwn() {
+        return roomOwn;
+    }
+
+    public void setRoomOwn(ArrayList<Room> roomOwn) {
+        this.roomOwn = roomOwn;
+    }
+
+    public Room getRoomLive() {
+        return roomLive;
+    }
+
+    public void setRoomLive(Room roomLive) {
+        this.roomLive = roomLive;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -100,24 +116,6 @@ public class User {
     public void setLine(String line) {
         this.line = line;
     }
-
-    public Room[] getRoomOwn() {
-        return roomOwn;
-    }
-
-    public void setRoomOwn(Room[] roomOwn) {
-        this.roomOwn = roomOwn;
-    }
-
-    public Room getRoomLive() {
-        return roomLive;
-    }
-
-    public void setRoomLive(Room roomLive) {
-        this.roomLive = roomLive;
-    }
-    
-    
 
     public int getUserType() {
         return userType;
@@ -140,6 +138,7 @@ public class User {
         return "User{" + "userId=" + userId + ", fname=" + fname + ", lname=" + lname + ", username=" + username + ", password=" + password + ", roomOwn=" + roomOwn + ", roomLive=" + roomLive + ", phone=" + phone + ", line=" + line + ", userType=" + userType + ", userTypeStr=" + userTypeStr + '}';
     }
 
+   
 
     
     
