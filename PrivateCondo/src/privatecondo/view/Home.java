@@ -51,6 +51,7 @@ public class Home extends javax.swing.JFrame {
         jButtonReport = new javax.swing.JButton();
         user = new javax.swing.JPanel();
         jPanelSelectRoomSV = new javax.swing.JPanel();
+        jButtonPreviousToRoomSV = new javax.swing.JButton();
         jPanelRoomSV = new javax.swing.JPanel();
         jLabelTime = new javax.swing.JLabel();
         jComboBoxDate = new javax.swing.JComboBox<>();
@@ -158,6 +159,19 @@ public class Home extends javax.swing.JFrame {
 
         jPanelSelectRoomSV.setBackground(new java.awt.Color(130, 187, 178));
         jPanelSelectRoomSV.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonPreviousToRoomSV.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonPreviousToRoomSV.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonPreviousToRoomSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/privatecondo/view/Picture/previous.png"))); // NOI18N
+        jButtonPreviousToRoomSV.setText("Previous");
+        jButtonPreviousToRoomSV.setContentAreaFilled(false);
+        jButtonPreviousToRoomSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPreviousToRoomSVActionPerformed(evt);
+            }
+        });
+        jPanelSelectRoomSV.add(jButtonPreviousToRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
+
         user.add(jPanelSelectRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
 
         jPanelRoomSV.setBackground(new java.awt.Color(130, 187, 178));
@@ -376,6 +390,19 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonReport1ActionPerformed
 
+    private void jButtonPreviousToRoomSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPreviousToRoomSVActionPerformed
+        // TODO add your handling code here:
+        jLabelRoomSV.setVisible(true);
+        jLabelReportList.setVisible(false);
+        jLabelReport1.setVisible(false);
+        jLabelHome.setVisible(false);
+        jPanelReport.setVisible(false);
+        jPanelNewsHome.setVisible(false);
+        jPanelRoomSV.setVisible(true);
+        jPanelReportProList.setVisible(false);
+        jPanelSelectRoomSV.setVisible(false);
+    }//GEN-LAST:event_jButtonPreviousToRoomSVActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -418,6 +445,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButtonHome1;
     private javax.swing.JButton jButtonListReport;
     private javax.swing.JButton jButtonLogoutAdmin;
+    private javax.swing.JButton jButtonPreviousToRoomSV;
     private javax.swing.JButton jButtonReport;
     private javax.swing.JButton jButtonReport1;
     private javax.swing.JButton jButtonRoomService;
