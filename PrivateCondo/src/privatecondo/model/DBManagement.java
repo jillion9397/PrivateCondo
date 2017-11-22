@@ -34,7 +34,7 @@ public class DBManagement {
     public void createConnection()
             throws ClassNotFoundException,SQLException{
         Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/testcondo?user=root&password=&characterEncoding=UTF-8");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/privatecondo?user=root&password=&characterEncoding=UTF-8");
 //        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaname_db?user=root&password=&characterEncoding=UTF-8");
 //        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaname_db?useUnicode=yes&characterEncoding=utf-8","root","");
     }
@@ -66,32 +66,76 @@ public class DBManagement {
                 user.setPhone(rs.getString("telNo")); 
                 user.setLine(rs.getString("line")); 
                 user.setUserTypeStr(rs.getString("ut.userType_name"));
+                user.setRoomOwn(queryRoomOwn(user));
+                user.setRoomLive(queryRoomlive(user));
+                
             } 
         }
         return user;
     }
     
-    public Room[] queryRoomOwn(int userId) throws SQLException{
+    public ArrayList<Room> queryRoomOwn(User user) throws SQLException{
         ArrayList<Room> roomOwn = new ArrayList<Room>(); 
         Statement stm = conn.createStatement();
-        ResultSet rs = stm.executeQuery("SELECT u.* FROM rooms r"
+        ResultSet rs = stm.executeQuery("SELECT r.* FROM rooms r"
                 + " JOIN userroomrelation urr ON urr.rooms_roomId=r.roomId"
-                + " JOiN relationtype rt ON urr.relationtype_typeid=rt.relationTypeName"
-                + " WHERE userid='"+userId+"'"); 
+                + " JOiN relationtype rt ON urr.relationtype_typeid=rt.relationTypeId"
+                + " WHERE user_userid='"+user.getUserId()+"' AND rt.relationTypeName='Owner'"); 
         while(rs.next()){
             Room r = new Room();
+            r.setOwner(user);
+            r.setRoomId(rs.getInt("r.roomId"));
+            r.setFloor(rs.getInt("r.floor"));
+            r.setRoomNumber(rs.getString("r.roomNum"));
+            roomOwn.add(r);
         }
-        
-        return (Room[])roomOwn.toArray();
+        return roomOwn;
+    }
+    
+    public Room queryRoomlive(User user) throws SQLException{
+        Room roomLive = new Room(); 
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT r.* FROM rooms r"
+                + " JOIN userroomrelation urr ON urr.rooms_roomId=r.roomId"
+                + " JOiN relationtype rt ON urr.relationtype_typeid=rt.relationTypeId"
+                + " WHERE user_userid='"+user.getUserId()+"' AND rt.relationTypeName='Owner'"); 
+        if(rs.next()){
+            roomLive.setOwner(user);
+            roomLive.setRoomId(rs.getInt("r.roomId"));
+            roomLive.setFloor(rs.getInt("r.floor"));
+            roomLive.setRoomNumber(rs.getString("r.roomNum"));
+        }
+        return roomLive;
     }
     
     public static void main(String[] args) throws Exception {
         //test ja 
         DBManagement dbm = new DBManagement();
         dbm.createConnection();
-        User activeuser = dbm.login("poom029", "029");
+        User activeuser = dbm.login("jillion", "1234");
         System.out.println(activeuser);
+//        ArrayList<News> list = dbm.queryNews();
+//        for(int i=0;i<list.size();i++){
+//            System.out.println(list.toArray()[i]);
+//            
+//        }
         dbm.disconnect();
+        
+        
+    }
+    
+    public ArrayList<News> queryNews() throws SQLException{
+         ArrayList<News> news = new ArrayList<News>(); 
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM news"); 
+        while(rs.next()){
+            News n = new News();
+            n.setTopic(rs.getString("news_topic"));
+            n.setDescription(rs.getString("news_description"));
+            n.setAnnounceDate(rs.getDate("announceDate"));
+            news.add(n);
+        }
+        return news;
     }
     /*public int insertItem(String itemName, String itemDesc,int ownerId,int itemCate,String date)
                 throws SQLException{ 
