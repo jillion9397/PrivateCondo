@@ -47,12 +47,52 @@ public class DBManagement {
         }
         return false;
     }
-    /*public static void main(String[] args) throws Exception {
+    
+    public User login(String username,String password) throws SQLException {
+        User user=null;
+        
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM users u"
+                + " JOIN usertypes ut ON u.usertype_id=ut.usertype_id WHERE username='"+username+"'"); 
+        if(rs.next()){
+            if(password.equals(rs.getString("password"))){ 
+                user=new User(); 
+                user.setUserId(rs.getInt("userID")); 
+                user.setUserType(rs.getInt("userType_Id")); 
+                user.setFname(rs.getString("fname"));
+                user.setLname(rs.getString("lname"));
+                user.setUsername(username); 
+                user.setPassword(password); 
+                user.setPhone(rs.getString("telNo")); 
+                user.setLine(rs.getString("line")); 
+                user.setUserTypeStr(rs.getString("ut.userType_name"));
+            } 
+        }
+        return user;
+    }
+    
+    public Room[] queryRoomOwn(int userId) throws SQLException{
+        ArrayList<Room> roomOwn = new ArrayList<Room>(); 
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT u.* FROM rooms r"
+                + " JOIN userroomrelation urr ON urr.rooms_roomId=r.roomId"
+                + " JOiN relationtype rt ON urr.relationtype_typeid=rt.relationTypeName"
+                + " WHERE userid='"+userId+"'"); 
+        while(rs.next()){
+            Room r = new Room();
+        }
+        
+        return (Room[])roomOwn.toArray();
+    }
+    
+    public static void main(String[] args) throws Exception {
         //test ja 
         DBManagement dbm = new DBManagement();
         dbm.createConnection();
+        User activeuser = dbm.login("poom029", "029");
+        System.out.println(activeuser);
         dbm.disconnect();
-    }*/
+    }
     /*public int insertItem(String itemName, String itemDesc,int ownerId,int itemCate,String date)
                 throws SQLException{ 
         Statement stm=null;

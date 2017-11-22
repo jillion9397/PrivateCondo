@@ -10,8 +10,8 @@ package privatecondo.model;
  * @author poom029
  */
 public class User {
-    public static final int TYPE_ADMIN=1;
-    public static final int TYPE_USER=2;
+    public static final int TYPE_ADMIN=0;
+    public static final int TYPE_USER=1;
        
     private int userId;
     private String fname;
@@ -133,6 +133,11 @@ public class User {
 
     public void setUserTypeStr(String userTypeStr) {
         this.userTypeStr = userTypeStr;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "userId=" + userId + ", fname=" + fname + ", lname=" + lname + ", username=" + username + ", password=" + password + ", roomOwn=" + roomOwn + ", roomLive=" + roomLive + ", phone=" + phone + ", line=" + line + ", userType=" + userType + ", userTypeStr=" + userTypeStr + '}';
     }
 
 
