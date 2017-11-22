@@ -109,18 +109,33 @@ public class Home extends javax.swing.JFrame {
         jButtonRoomService.setForeground(new java.awt.Color(234, 216, 106));
         jButtonRoomService.setText("Room Service");
         jButtonRoomService.setContentAreaFilled(false);
+        jButtonRoomService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRoomServiceActionPerformed(evt);
+            }
+        });
         jPanelLeftMenu.add(jButtonRoomService, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 180, 40));
 
         jButtonHome.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
         jButtonHome.setForeground(new java.awt.Color(234, 216, 106));
         jButtonHome.setText("Home");
         jButtonHome.setContentAreaFilled(false);
+        jButtonHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHomeActionPerformed(evt);
+            }
+        });
         jPanelLeftMenu.add(jButtonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 180, 40));
 
         jButtonReport.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
         jButtonReport.setForeground(new java.awt.Color(234, 216, 106));
         jButtonReport.setText("Report");
         jButtonReport.setContentAreaFilled(false);
+        jButtonReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReportActionPerformed(evt);
+            }
+        });
         jPanelLeftMenu.add(jButtonReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 180, 40));
 
         userPrivateCondo.add(jPanelLeftMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 490));
@@ -221,6 +236,42 @@ public class Home extends javax.swing.JFrame {
     private void jButtonSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSelectActionPerformed
+
+    private void jButtonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHomeActionPerformed
+        // TODO add your handling code here:
+        jLabelRoomSV.setVisible(false);
+        jLabelReportList.setVisible(false);
+        jLabelReport1.setVisible(false);
+        jLabelHome.setVisible(true);
+        jPanelReport.setVisible(false);
+        jPanelNewsHome.setVisible(true);
+        jPanelRoomSV.setVisible(false);
+        jPanelReportProList.setVisible(false);
+    }//GEN-LAST:event_jButtonHomeActionPerformed
+
+    private void jButtonReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportActionPerformed
+        // TODO add your handling code here:
+        jLabelRoomSV.setVisible(false);
+        jLabelReportList.setVisible(false);
+        jLabelReport1.setVisible(true);
+        jLabelHome.setVisible(false);
+        jPanelReport.setVisible(true);
+        jPanelNewsHome.setVisible(false);
+        jPanelRoomSV.setVisible(false);
+        jPanelReportProList.setVisible(false);
+    }//GEN-LAST:event_jButtonReportActionPerformed
+
+    private void jButtonRoomServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRoomServiceActionPerformed
+        // TODO add your handling code here:
+        jLabelRoomSV.setVisible(true);
+        jLabelReportList.setVisible(false);
+        jLabelReport1.setVisible(false);
+        jLabelHome.setVisible(false);
+        jPanelReport.setVisible(false);
+        jPanelNewsHome.setVisible(false);
+        jPanelRoomSV.setVisible(true);
+        jPanelReportProList.setVisible(false);
+    }//GEN-LAST:event_jButtonRoomServiceActionPerformed
 
     /**
      * @param args the command line arguments
