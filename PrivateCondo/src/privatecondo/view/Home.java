@@ -50,14 +50,15 @@ public class Home extends javax.swing.JFrame {
         jButtonHome = new javax.swing.JButton();
         jButtonReport = new javax.swing.JButton();
         user = new javax.swing.JPanel();
-        jPanelSelectRoomSV = new javax.swing.JPanel();
-        jButtonPreviousToRoomSV = new javax.swing.JButton();
         jPanelRoomSV = new javax.swing.JPanel();
         jLabelTime = new javax.swing.JLabel();
         jComboBoxDate = new javax.swing.JComboBox<>();
         jLabelDate = new javax.swing.JLabel();
         jComboBoxTime = new javax.swing.JComboBox<>();
         jButtonSelect = new javax.swing.JButton();
+        jLabelDateSelect = new javax.swing.JLabel();
+        jPanelSelectRoomSV = new javax.swing.JPanel();
+        jButtonPreviousToRoomSV = new javax.swing.JButton();
         jPanelNewsHome = new javax.swing.JPanel();
         jPanelReport = new javax.swing.JPanel();
         jLabelReportDescription = new javax.swing.JLabel();
@@ -157,6 +158,42 @@ public class Home extends javax.swing.JFrame {
 
         user.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanelRoomSV.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelRoomSV.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelTime.setFont(new java.awt.Font("Leelawadee", 0, 16)); // NOI18N
+        jLabelTime.setText("Select Time");
+        jPanelRoomSV.add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
+
+        jComboBoxDate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelRoomSV.add(jComboBoxDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 190, 30));
+
+        jLabelDate.setFont(new java.awt.Font("Leelawadee", 0, 16)); // NOI18N
+        jLabelDate.setText("Select Day");
+        jPanelRoomSV.add(jLabelDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        jComboBoxTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelRoomSV.add(jComboBoxTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 190, 30));
+
+        jButtonSelect.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonSelect.setText("Select");
+        jButtonSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSelectActionPerformed(evt);
+            }
+        });
+        jPanelRoomSV.add(jButtonSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 130, 30));
+
+        jLabelDateSelect.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelDateSelect.setText("center");
+        jLabelDateSelect.setFocusable(false);
+        jLabelDateSelect.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelDateSelect.setOpaque(true);
+        jPanelRoomSV.add(jLabelDateSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 170, 30));
+        jLabelDateSelect.getAccessibleContext().setAccessibleName("");
+
+        user.add(jPanelRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
+
         jPanelSelectRoomSV.setBackground(new java.awt.Color(130, 187, 178));
         jPanelSelectRoomSV.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -173,34 +210,6 @@ public class Home extends javax.swing.JFrame {
         jPanelSelectRoomSV.add(jButtonPreviousToRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
 
         user.add(jPanelSelectRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
-
-        jPanelRoomSV.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelRoomSV.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelTime.setFont(new java.awt.Font("Leelawadee", 0, 16)); // NOI18N
-        jLabelTime.setText("Select Time");
-        jPanelRoomSV.add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
-
-        jComboBoxDate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelRoomSV.add(jComboBoxDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 240, 30));
-
-        jLabelDate.setFont(new java.awt.Font("Leelawadee", 0, 16)); // NOI18N
-        jLabelDate.setText("Select Day");
-        jPanelRoomSV.add(jLabelDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-
-        jComboBoxTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelRoomSV.add(jComboBoxTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 240, 30));
-
-        jButtonSelect.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonSelect.setText("Select");
-        jButtonSelect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSelectActionPerformed(evt);
-            }
-        });
-        jPanelRoomSV.add(jButtonSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 130, 30));
-
-        user.add(jPanelRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
 
         jPanelNewsHome.setBackground(new java.awt.Color(130, 187, 178));
         jPanelNewsHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -455,6 +464,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxDate;
     private javax.swing.JComboBox<String> jComboBoxTime;
     private javax.swing.JLabel jLabelDate;
+    private javax.swing.JLabel jLabelDateSelect;
     private javax.swing.JLabel jLabelHome;
     private javax.swing.JLabel jLabelReport1;
     private javax.swing.JLabel jLabelReportDescription;
