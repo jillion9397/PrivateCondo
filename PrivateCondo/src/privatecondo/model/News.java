@@ -5,6 +5,9 @@
  */
 package privatecondo.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 
 /**
@@ -16,6 +19,8 @@ public class News {
     private String topic;
     private String description;
     private Date announceDate;
+    
+    DBManagement db = new DBManagement();
 
     public News() {
     }
@@ -59,5 +64,17 @@ public class News {
         this.announceDate = announceDate;
     }
     
+//    public ResultSet getNew() throws ClassNotFoundException, SQLException{
+//        ResultSet result = null;
+//            
+//        try{
+//            db.createConnection();
+//           Statement st = connect.createStatement(); 
+//        }
+//        catch(Exception e){
+//           System.out.println(e);
+//        }
+//        return result;
+//    }
     
 }
