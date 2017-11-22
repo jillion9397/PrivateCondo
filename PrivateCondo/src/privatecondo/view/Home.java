@@ -81,7 +81,7 @@ public class Home extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(234, 216, 106));
         jButton1.setText("LOGOUT");
         jButton1.setContentAreaFilled(false);
-        jPanelHeadMenu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, -1));
+        jPanelHeadMenu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, -1));
 
         jPanelCenter.add(jPanelHeadMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 120));
 

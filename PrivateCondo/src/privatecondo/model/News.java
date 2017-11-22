@@ -5,6 +5,7 @@
  */
 package privatecondo.model;
 
+import java.sql.ResultSet;
 import java.util.Date;
 
 /**
@@ -59,5 +60,7 @@ public class News {
         this.announceDate = announceDate;
     }
     
-    
+    public ResultSet getNew(){
+        
+    }
 }
