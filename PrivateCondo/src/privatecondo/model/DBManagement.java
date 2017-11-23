@@ -210,7 +210,7 @@ public class DBManagement {
         DBManagement dbm = new DBManagement();
         dbm.createConnection();
         User activeuser = dbm.login("jillion", "1234");
-        System.out.println(activeuser);
+        System.out.println(dbm.queryNews());
 //        Room r = new Room();
 //        r.setRoomId(13);
 //        User usr = new User();
@@ -246,7 +246,7 @@ public class DBManagement {
     public ArrayList<News> queryNews() throws SQLException{
          ArrayList<News> news = new ArrayList<News>(); 
         Statement stm = conn.createStatement();
-        ResultSet rs = stm.executeQuery("SELECT * FROM news"); 
+        ResultSet rs = stm.executeQuery("SELECT * FROM news Order By announceDate DESC"); 
         while(rs.next()){
             News n = new News();
             n.setTopic(rs.getString("news_topic"));
