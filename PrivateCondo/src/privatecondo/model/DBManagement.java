@@ -166,6 +166,20 @@ public class DBManagement {
         return problems;
     }
     
+    //subquery type II
+    public int countNotDoneProblem() throws SQLException{
+        int count = 0;
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM problems p "
+                + "WHERE problem_id NOT IN "
+                + "(SELECT problem_id FROM problemhandler ph WHERE p.problem_id = ph.problem_id)"); 
+        
+        while(rs.next()){
+            count++;
+        }
+        return count;
+//        SELECT * FROM problems p WHERE problem_id NOT IN (SELECT problem_id FROM problemhandler ph WHERE p.problem_id = ph.problem_id)
+    }
     public void addNews(News n,int ancId) throws SQLException{
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
