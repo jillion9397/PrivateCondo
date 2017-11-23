@@ -51,55 +51,6 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        login = new javax.swing.JPanel();
-        jPanelLeft = new javax.swing.JPanel();
-        jPanelLoginHome = new javax.swing.JPanel();
-        signin1 = new javax.swing.JButton();
-        jLabelLogin = new javax.swing.JLabel();
-        sPassG1 = new javax.swing.JLabel();
-        warning1 = new javax.swing.JLabel();
-        sEmailB1 = new javax.swing.JLabel();
-        sEmailG1 = new javax.swing.JLabel();
-        password = new javax.swing.JPasswordField();
-        username = new javax.swing.JTextField();
-        sPassB1 = new javax.swing.JLabel();
-        homePrivateCondo = new javax.swing.JPanel();
-        jPanelHeadHome = new javax.swing.JPanel();
-        jButtonLogin = new javax.swing.JButton();
-        jPanelFooter = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabelPicCondo = new javax.swing.JLabel();
-        adminPrivateCondo = new javax.swing.JPanel();
-        jPanelLeftMenuAdmin = new javax.swing.JPanel();
-        jButtonRoomService1 = new javax.swing.JButton();
-        jButtonHome1 = new javax.swing.JButton();
-        jButtonReport1 = new javax.swing.JButton();
-        jPanelHeadMenuAdmin = new javax.swing.JPanel();
-        jLabelUserProfileAdmin = new javax.swing.JLabel();
-        jButtonLogoutAdmin = new javax.swing.JButton();
-        jLabelNewAdmin = new javax.swing.JLabel();
-        jLabelAddNew = new javax.swing.JLabel();
-        jLabelEditNew = new javax.swing.JLabel();
-        jLabelReport = new javax.swing.JLabel();
-        jLabelRoomSVadmin = new javax.swing.JLabel();
-        jPanelAdmin = new javax.swing.JPanel();
-        jPanelEditNew = new javax.swing.JPanel();
-        jLabelEditNewTopic = new javax.swing.JLabel();
-        jLabelEditNewDescription = new javax.swing.JLabel();
-        jTextFieldEditTopicNew = new javax.swing.JTextField();
-        jScrollPaneReportDes2 = new javax.swing.JScrollPane();
-        jTextAreaEditContentNew = new javax.swing.JTextArea();
-        jButtonEditNews = new javax.swing.JButton();
-        jPanelAddNew = new javax.swing.JPanel();
-        jLabelNewDescription = new javax.swing.JLabel();
-        jLabelNewTopic = new javax.swing.JLabel();
-        jTextFieldTopicNew = new javax.swing.JTextField();
-        jScrollPaneReportDes1 = new javax.swing.JScrollPane();
-        jTextAreaContentNew = new javax.swing.JTextArea();
-        jButtonAddNews = new javax.swing.JButton();
-        jPanelNewAdmin = new javax.swing.JPanel();
-        jPanelReportAdmin = new javax.swing.JPanel();
-        jPanelRoomServiceAdmin = new javax.swing.JPanel();
         userPrivateCondo = new javax.swing.JPanel();
         jPanelHeadMenu = new javax.swing.JPanel();
         jLabelHome = new javax.swing.JLabel();
@@ -108,6 +59,8 @@ public class Home extends javax.swing.JFrame {
         jLabelReportList = new javax.swing.JLabel();
         jLabelReport1 = new javax.swing.JLabel();
         jLabelRoomSV = new javax.swing.JLabel();
+        userType = new javax.swing.JLabel();
+        userNameUser = new javax.swing.JLabel();
         jPanelLeftMenu = new javax.swing.JPanel();
         jButtonRoomService = new javax.swing.JButton();
         jButtonHome = new javax.swing.JButton();
@@ -132,284 +85,59 @@ public class Home extends javax.swing.JFrame {
         jButtonListReport = new javax.swing.JButton();
         jButtonSendReport = new javax.swing.JButton();
         jPanelReportProList = new javax.swing.JPanel();
+        login = new javax.swing.JPanel();
+        jPanelLeft = new javax.swing.JPanel();
+        jPanelLoginHome = new javax.swing.JPanel();
+        signin1 = new javax.swing.JButton();
+        jLabelLogin = new javax.swing.JLabel();
+        sPassG1 = new javax.swing.JLabel();
+        warning1 = new javax.swing.JLabel();
+        sEmailB1 = new javax.swing.JLabel();
+        sEmailG1 = new javax.swing.JLabel();
+        username = new javax.swing.JTextField();
+        sPassB1 = new javax.swing.JLabel();
+        password = new javax.swing.JPasswordField();
+        homePrivateCondo = new javax.swing.JPanel();
+        jPanelHeadHome = new javax.swing.JPanel();
+        jButtonLogin = new javax.swing.JButton();
+        jPanelFooter = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabelPicCondo = new javax.swing.JLabel();
+        adminPrivateCondo = new javax.swing.JPanel();
+        jPanelLeftMenuAdmin = new javax.swing.JPanel();
+        jButtonRoomService1 = new javax.swing.JButton();
+        jButtonHome1 = new javax.swing.JButton();
+        jButtonReport1 = new javax.swing.JButton();
+        jPanelHeadMenuAdmin = new javax.swing.JPanel();
+        jLabelUserProfileAdmin = new javax.swing.JLabel();
+        jButtonLogoutAdmin = new javax.swing.JButton();
+        jLabelNewAdmin = new javax.swing.JLabel();
+        jLabelAddNew = new javax.swing.JLabel();
+        jLabelEditNew = new javax.swing.JLabel();
+        jLabelReport = new javax.swing.JLabel();
+        jLabelRoomSVadmin = new javax.swing.JLabel();
+        userNameAdmin = new javax.swing.JLabel();
+        jPanelAdmin = new javax.swing.JPanel();
+        jPanelEditNew = new javax.swing.JPanel();
+        jLabelEditNewTopic = new javax.swing.JLabel();
+        jLabelEditNewDescription = new javax.swing.JLabel();
+        jTextFieldEditTopicNew = new javax.swing.JTextField();
+        jScrollPaneReportDes2 = new javax.swing.JScrollPane();
+        jTextAreaEditContentNew = new javax.swing.JTextArea();
+        jButtonEditNews = new javax.swing.JButton();
+        jPanelAddNew = new javax.swing.JPanel();
+        jLabelNewDescription = new javax.swing.JLabel();
+        jLabelNewTopic = new javax.swing.JLabel();
+        jTextFieldTopicNew = new javax.swing.JTextField();
+        jScrollPaneReportDes1 = new javax.swing.JScrollPane();
+        jTextAreaContentNew = new javax.swing.JTextArea();
+        jButtonAddNews = new javax.swing.JButton();
+        jPanelNewAdmin = new javax.swing.JPanel();
+        jPanelReportAdmin = new javax.swing.JPanel();
+        jPanelRoomServiceAdmin = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelLeft.setBackground(new java.awt.Color(43, 64, 57));
-        jPanelLeft.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        login.add(jPanelLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 500));
-
-        jPanelLoginHome.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelLoginHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        signin1.setBackground(new java.awt.Color(71, 82, 94));
-        signin1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        signin1.setForeground(new java.awt.Color(255, 255, 255));
-        signin1.setText("Login");
-        signin1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        signin1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                signin1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                signin1MouseExited(evt);
-            }
-        });
-        signin1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signin1ActionPerformed(evt);
-            }
-        });
-        jPanelLoginHome.add(signin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 300, 30));
-
-        jLabelLogin.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
-        jLabelLogin.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelLogin.setText("LOGIN");
-        jPanelLoginHome.add(jLabelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
-
-        sPassG1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanelLoginHome.add(sPassG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, 10));
-
-        warning1.setFont(new java.awt.Font("Leelawadee", 0, 12)); // NOI18N
-        warning1.setForeground(new java.awt.Color(255, 51, 51));
-        warning1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        warning1.setText("Your username or password is incorrect.");
-        jPanelLoginHome.add(warning1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 280, 20));
-
-        sEmailB1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanelLoginHome.add(sEmailB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
-
-        sEmailG1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanelLoginHome.add(sEmailG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
-
-        password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        password.setForeground(new java.awt.Color(255, 255, 255));
-        password.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                passwordFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                passwordFocusLost(evt);
-            }
-        });
-        password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
-            }
-        });
-        jPanelLoginHome.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 240, 30));
-
-        username.setFont(new java.awt.Font("Leelawadee", 0, 15)); // NOI18N
-        username.setForeground(new java.awt.Color(153, 153, 153));
-        username.setText("Username");
-        username.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                usernameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                usernameFocusLost(evt);
-            }
-        });
-        username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
-            }
-        });
-        jPanelLoginHome.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 240, 30));
-
-        sPassB1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanelLoginHome.add(sPassB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, 10));
-
-        login.add(jPanelLoginHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 540, 490));
-
-        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
-
-        homePrivateCondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelHeadHome.setBackground(new java.awt.Color(43, 64, 57));
-        jPanelHeadHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButtonLogin.setBackground(new java.awt.Color(71, 82, 94));
-        jButtonLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonLogin.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonLogin.setText("LOGIN");
-        jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLoginActionPerformed(evt);
-            }
-        });
-        jPanelHeadHome.add(jButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 110, 30));
-
-        homePrivateCondo.add(jPanelHeadHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 90));
-
-        jPanelFooter.setBackground(new java.awt.Color(28, 107, 114));
-        jPanelFooter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setAlignmentX(3.0F);
-        jSeparator1.setAlignmentY(3.0F);
-        jPanelFooter.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 730, 50));
-
-        homePrivateCondo.add(jPanelFooter, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 730, 60));
-
-        jLabelPicCondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/privatecondo/view/Picture/img_condominium.jpg"))); // NOI18N
-        homePrivateCondo.add(jLabelPicCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 80, -1, -1));
-
-        getContentPane().add(homePrivateCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
-
-        adminPrivateCondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelLeftMenuAdmin.setBackground(new java.awt.Color(43, 64, 57));
-        jPanelLeftMenuAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButtonRoomService1.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
-        jButtonRoomService1.setForeground(new java.awt.Color(234, 216, 106));
-        jButtonRoomService1.setText("Room Service");
-        jButtonRoomService1.setContentAreaFilled(false);
-        jButtonRoomService1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRoomService1ActionPerformed(evt);
-            }
-        });
-        jPanelLeftMenuAdmin.add(jButtonRoomService1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 180, 40));
-
-        jButtonHome1.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
-        jButtonHome1.setForeground(new java.awt.Color(234, 216, 106));
-        jButtonHome1.setText("News");
-        jButtonHome1.setContentAreaFilled(false);
-        jButtonHome1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonHome1ActionPerformed(evt);
-            }
-        });
-        jPanelLeftMenuAdmin.add(jButtonHome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 180, 40));
-
-        jButtonReport1.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
-        jButtonReport1.setForeground(new java.awt.Color(234, 216, 106));
-        jButtonReport1.setText("Report");
-        jButtonReport1.setContentAreaFilled(false);
-        jButtonReport1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonReport1ActionPerformed(evt);
-            }
-        });
-        jPanelLeftMenuAdmin.add(jButtonReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 180, 40));
-
-        adminPrivateCondo.add(jPanelLeftMenuAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 490));
-
-        jPanelHeadMenuAdmin.setBackground(new java.awt.Color(28, 107, 114));
-        jPanelHeadMenuAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelUserProfileAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/privatecondo/view/Picture/profile-user.png"))); // NOI18N
-        jPanelHeadMenuAdmin.add(jLabelUserProfileAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
-
-        jButtonLogoutAdmin.setFont(new java.awt.Font("Quark", 1, 12)); // NOI18N
-        jButtonLogoutAdmin.setForeground(new java.awt.Color(234, 216, 106));
-        jButtonLogoutAdmin.setText("LOGOUT");
-        jButtonLogoutAdmin.setContentAreaFilled(false);
-        jPanelHeadMenuAdmin.add(jButtonLogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
-
-        jLabelNewAdmin.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
-        jLabelNewAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelNewAdmin.setText("NEWS");
-        jPanelHeadMenuAdmin.add(jLabelNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-
-        jLabelAddNew.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
-        jLabelAddNew.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelAddNew.setText("ADD NEWS");
-        jPanelHeadMenuAdmin.add(jLabelAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-
-        jLabelEditNew.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
-        jLabelEditNew.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelEditNew.setText("EDIT NEWS");
-        jPanelHeadMenuAdmin.add(jLabelEditNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-
-        jLabelReport.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
-        jLabelReport.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelReport.setText("REPORT");
-        jPanelHeadMenuAdmin.add(jLabelReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-
-        jLabelRoomSVadmin.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
-        jLabelRoomSVadmin.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelRoomSVadmin.setText("ROOM SERVICE");
-        jPanelHeadMenuAdmin.add(jLabelRoomSVadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-
-        adminPrivateCondo.add(jPanelHeadMenuAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 550, 120));
-
-        jPanelAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelEditNew.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelEditNew.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelEditNewTopic.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
-        jLabelEditNewTopic.setForeground(new java.awt.Color(43, 64, 57));
-        jLabelEditNewTopic.setText("Topic");
-        jPanelEditNew.add(jLabelEditNewTopic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
-
-        jLabelEditNewDescription.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
-        jLabelEditNewDescription.setForeground(new java.awt.Color(43, 64, 57));
-        jLabelEditNewDescription.setText("Description");
-        jPanelEditNew.add(jLabelEditNewDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
-        jPanelEditNew.add(jTextFieldEditTopicNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 350, 30));
-
-        jTextAreaEditContentNew.setColumns(20);
-        jTextAreaEditContentNew.setRows(5);
-        jScrollPaneReportDes2.setViewportView(jTextAreaEditContentNew);
-
-        jPanelEditNew.add(jScrollPaneReportDes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 350, 210));
-
-        jButtonEditNews.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonEditNews.setText("EDIT");
-        jPanelEditNew.add(jButtonEditNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
-
-        jPanelAdmin.add(jPanelEditNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
-
-        jPanelAddNew.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelAddNew.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelNewDescription.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
-        jLabelNewDescription.setForeground(new java.awt.Color(43, 64, 57));
-        jLabelNewDescription.setText("Description");
-        jPanelAddNew.add(jLabelNewDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
-
-        jLabelNewTopic.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
-        jLabelNewTopic.setForeground(new java.awt.Color(43, 64, 57));
-        jLabelNewTopic.setText("Topic");
-        jPanelAddNew.add(jLabelNewTopic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
-
-        jTextFieldTopicNew.setText("Insert your head new");
-        jPanelAddNew.add(jTextFieldTopicNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 350, 30));
-
-        jTextAreaContentNew.setColumns(20);
-        jTextAreaContentNew.setRows(5);
-        jScrollPaneReportDes1.setViewportView(jTextAreaContentNew);
-
-        jPanelAddNew.add(jScrollPaneReportDes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 350, 210));
-
-        jButtonAddNews.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonAddNews.setText("ADD");
-        jPanelAddNew.add(jButtonAddNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
-
-        jPanelAdmin.add(jPanelAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
-
-        jPanelNewAdmin.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelNewAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanelAdmin.add(jPanelNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
-
-        jPanelReportAdmin.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelReportAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanelAdmin.add(jPanelReportAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
-
-        jPanelRoomServiceAdmin.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelRoomServiceAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanelAdmin.add(jPanelRoomServiceAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
-
-        adminPrivateCondo.add(jPanelAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
-
-        getContentPane().add(adminPrivateCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
 
         userPrivateCondo.setBackground(new java.awt.Color(130, 187, 178));
         userPrivateCondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -429,7 +157,7 @@ public class Home extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(234, 216, 106));
         jButton1.setText("LOGOUT");
         jButton1.setContentAreaFilled(false);
-        jPanelHeadMenu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
+        jPanelHeadMenu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, -1));
 
         jLabelReportList.setFont(new java.awt.Font("Quark", 1, 36)); // NOI18N
         jLabelReportList.setForeground(new java.awt.Color(255, 255, 255));
@@ -445,6 +173,14 @@ public class Home extends javax.swing.JFrame {
         jLabelRoomSV.setForeground(new java.awt.Color(255, 255, 255));
         jLabelRoomSV.setText("Room Service");
         jPanelHeadMenu.add(jLabelRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        userType.setFont(new java.awt.Font("Leelawadee", 1, 14)); // NOI18N
+        userType.setForeground(new java.awt.Color(153, 153, 153));
+        jPanelHeadMenu.add(userType, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 140, 30));
+
+        userNameUser.setFont(new java.awt.Font("Leelawadee", 1, 14)); // NOI18N
+        userNameUser.setForeground(new java.awt.Color(255, 255, 255));
+        jPanelHeadMenu.add(userNameUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 140, 30));
 
         userPrivateCondo.add(jPanelHeadMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 550, 120));
 
@@ -591,6 +327,271 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(userPrivateCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
 
+        login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelLeft.setBackground(new java.awt.Color(43, 64, 57));
+        jPanelLeft.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        login.add(jPanelLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 500));
+
+        jPanelLoginHome.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelLoginHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        signin1.setBackground(new java.awt.Color(71, 82, 94));
+        signin1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        signin1.setForeground(new java.awt.Color(255, 255, 255));
+        signin1.setText("Login");
+        signin1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signin1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                signin1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                signin1MouseExited(evt);
+            }
+        });
+        signin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signin1ActionPerformed(evt);
+            }
+        });
+        jPanelLoginHome.add(signin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 300, 30));
+
+        jLabelLogin.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabelLogin.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelLogin.setText("LOGIN");
+        jPanelLoginHome.add(jLabelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
+
+        sPassG1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanelLoginHome.add(sPassG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, 10));
+
+        warning1.setFont(new java.awt.Font("Leelawadee", 0, 12)); // NOI18N
+        warning1.setForeground(new java.awt.Color(255, 51, 51));
+        warning1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        warning1.setText("Your username or password is incorrect.");
+        jPanelLoginHome.add(warning1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 280, 20));
+
+        sEmailB1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanelLoginHome.add(sEmailB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
+
+        sEmailG1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanelLoginHome.add(sEmailG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
+
+        username.setFont(new java.awt.Font("Leelawadee", 0, 15)); // NOI18N
+        username.setForeground(new java.awt.Color(153, 153, 153));
+        username.setText("Username");
+        username.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usernameFocusLost(evt);
+            }
+        });
+        username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameActionPerformed(evt);
+            }
+        });
+        jPanelLoginHome.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 240, 30));
+
+        sPassB1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanelLoginHome.add(sPassB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, 10));
+
+        password.setText("jPasswordField1");
+        jPanelLoginHome.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 240, 30));
+
+        login.add(jPanelLoginHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 540, 490));
+
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
+
+        homePrivateCondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelHeadHome.setBackground(new java.awt.Color(43, 64, 57));
+        jPanelHeadHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonLogin.setBackground(new java.awt.Color(71, 82, 94));
+        jButtonLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonLogin.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonLogin.setText("LOGIN");
+        jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLoginActionPerformed(evt);
+            }
+        });
+        jPanelHeadHome.add(jButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 110, 30));
+
+        homePrivateCondo.add(jPanelHeadHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 90));
+
+        jPanelFooter.setBackground(new java.awt.Color(28, 107, 114));
+        jPanelFooter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setAlignmentX(3.0F);
+        jSeparator1.setAlignmentY(3.0F);
+        jPanelFooter.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 730, 50));
+
+        homePrivateCondo.add(jPanelFooter, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 730, 60));
+
+        jLabelPicCondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/privatecondo/view/Picture/img_condominium.jpg"))); // NOI18N
+        homePrivateCondo.add(jLabelPicCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 80, -1, -1));
+
+        getContentPane().add(homePrivateCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
+
+        adminPrivateCondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelLeftMenuAdmin.setBackground(new java.awt.Color(43, 64, 57));
+        jPanelLeftMenuAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonRoomService1.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
+        jButtonRoomService1.setForeground(new java.awt.Color(234, 216, 106));
+        jButtonRoomService1.setText("Room Service");
+        jButtonRoomService1.setContentAreaFilled(false);
+        jButtonRoomService1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRoomService1ActionPerformed(evt);
+            }
+        });
+        jPanelLeftMenuAdmin.add(jButtonRoomService1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 180, 40));
+
+        jButtonHome1.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
+        jButtonHome1.setForeground(new java.awt.Color(234, 216, 106));
+        jButtonHome1.setText("News");
+        jButtonHome1.setContentAreaFilled(false);
+        jButtonHome1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHome1ActionPerformed(evt);
+            }
+        });
+        jPanelLeftMenuAdmin.add(jButtonHome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 180, 40));
+
+        jButtonReport1.setFont(new java.awt.Font("Quark", 1, 24)); // NOI18N
+        jButtonReport1.setForeground(new java.awt.Color(234, 216, 106));
+        jButtonReport1.setText("Report");
+        jButtonReport1.setContentAreaFilled(false);
+        jButtonReport1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReport1ActionPerformed(evt);
+            }
+        });
+        jPanelLeftMenuAdmin.add(jButtonReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 180, 40));
+
+        adminPrivateCondo.add(jPanelLeftMenuAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 490));
+
+        jPanelHeadMenuAdmin.setBackground(new java.awt.Color(28, 107, 114));
+        jPanelHeadMenuAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelUserProfileAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/privatecondo/view/Picture/profile-user.png"))); // NOI18N
+        jPanelHeadMenuAdmin.add(jLabelUserProfileAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
+
+        jButtonLogoutAdmin.setFont(new java.awt.Font("Quark", 1, 12)); // NOI18N
+        jButtonLogoutAdmin.setForeground(new java.awt.Color(234, 216, 106));
+        jButtonLogoutAdmin.setText("LOGOUT");
+        jButtonLogoutAdmin.setContentAreaFilled(false);
+        jPanelHeadMenuAdmin.add(jButtonLogoutAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
+
+        jLabelNewAdmin.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabelNewAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNewAdmin.setText("NEWS");
+        jPanelHeadMenuAdmin.add(jLabelNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        jLabelAddNew.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabelAddNew.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelAddNew.setText("ADD NEWS");
+        jPanelHeadMenuAdmin.add(jLabelAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        jLabelEditNew.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabelEditNew.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelEditNew.setText("EDIT NEWS");
+        jPanelHeadMenuAdmin.add(jLabelEditNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        jLabelReport.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabelReport.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelReport.setText("REPORT");
+        jPanelHeadMenuAdmin.add(jLabelReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        jLabelRoomSVadmin.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabelRoomSVadmin.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelRoomSVadmin.setText("ROOM SERVICE");
+        jPanelHeadMenuAdmin.add(jLabelRoomSVadmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        userNameAdmin.setFont(new java.awt.Font("Leelawadee", 1, 14)); // NOI18N
+        userNameAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        jPanelHeadMenuAdmin.add(userNameAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 140, 30));
+
+        adminPrivateCondo.add(jPanelHeadMenuAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 550, 120));
+
+        jPanelAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelEditNew.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelEditNew.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelEditNewTopic.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelEditNewTopic.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelEditNewTopic.setText("Topic");
+        jPanelEditNew.add(jLabelEditNewTopic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabelEditNewDescription.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelEditNewDescription.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelEditNewDescription.setText("Description");
+        jPanelEditNew.add(jLabelEditNewDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        jPanelEditNew.add(jTextFieldEditTopicNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 350, 30));
+
+        jTextAreaEditContentNew.setColumns(20);
+        jTextAreaEditContentNew.setRows(5);
+        jScrollPaneReportDes2.setViewportView(jTextAreaEditContentNew);
+
+        jPanelEditNew.add(jScrollPaneReportDes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 350, 210));
+
+        jButtonEditNews.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonEditNews.setText("EDIT");
+        jPanelEditNew.add(jButtonEditNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
+
+        jPanelAdmin.add(jPanelEditNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
+        jPanelAddNew.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelAddNew.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelNewDescription.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelNewDescription.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelNewDescription.setText("Description");
+        jPanelAddNew.add(jLabelNewDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+
+        jLabelNewTopic.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelNewTopic.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelNewTopic.setText("Topic");
+        jPanelAddNew.add(jLabelNewTopic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jTextFieldTopicNew.setText("Insert your head new");
+        jPanelAddNew.add(jTextFieldTopicNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 350, 30));
+
+        jTextAreaContentNew.setColumns(20);
+        jTextAreaContentNew.setRows(5);
+        jScrollPaneReportDes1.setViewportView(jTextAreaContentNew);
+
+        jPanelAddNew.add(jScrollPaneReportDes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 350, 210));
+
+        jButtonAddNews.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonAddNews.setText("ADD");
+        jPanelAddNew.add(jButtonAddNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
+
+        jPanelAdmin.add(jPanelAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
+        jPanelNewAdmin.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelNewAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelAdmin.add(jPanelNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
+        jPanelReportAdmin.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelReportAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelAdmin.add(jPanelReportAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
+        jPanelRoomServiceAdmin.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelRoomServiceAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelAdmin.add(jPanelRoomServiceAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
+        adminPrivateCondo.add(jPanelAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
+
+        getContentPane().add(adminPrivateCondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 490));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -694,14 +695,6 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameFocusLost
 
-    private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFocusGained
-
-    private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFocusLost
-
     private void signin1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signin1MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_signin1MouseEntered
@@ -713,16 +706,20 @@ public class Home extends javax.swing.JFrame {
     private void signin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signin1ActionPerformed
         try {
             // TODO add your handling code here:
+            dbm.createConnection();
             activeUser = dbm.login(username.getText(), password.getText());
+            dbm.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if(activeUser.getUserType()==0){
+        if(activeUser.getUserType()==1){//user
             homePrivateCondo.setVisible(false);
             adminPrivateCondo.setVisible(false);
             userPrivateCondo.setVisible(true);
             login.setVisible(false);
-            jPanelHeadMenu.setVisible(false);
+            jPanelHeadMenu.setVisible(true);
             jLabelRoomSV.setVisible(false);
             jLabelReportList.setVisible(false);
             jLabelReport1.setVisible(false);
@@ -732,6 +729,8 @@ public class Home extends javax.swing.JFrame {
             jPanelRoomSV.setVisible(false);
             jPanelReportProList.setVisible(false);
             jPanelSelectRoomSV.setVisible(false);
+            userNameUser.setText(activeUser.getFname());
+//            userType.setText(activeUser.get);
         }else{
             homePrivateCondo.setVisible(false);
             adminPrivateCondo.setVisible(true);
@@ -743,12 +742,16 @@ public class Home extends javax.swing.JFrame {
             jPanelNewAdmin.setVisible(true);
             jPanelReportAdmin.setVisible(false);
             jPanelRoomServiceAdmin.setVisible(false);
+            jPanelLeftMenuAdmin.setVisible(true);
+            jPanelHeadMenuAdmin.setVisible(true);
+            jLabelNewAdmin.setVisible(true);
+            jLabelAddNew.setVisible(false);
+            jLabelEditNew.setVisible(false);
+            jLabelReport.setVisible(false);
+            jLabelRoomSVadmin.setVisible(false);
+            userNameAdmin.setText(activeUser.getFname());
         }
     }//GEN-LAST:event_signin1ActionPerformed
-
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         // TODO add your handling code here:
@@ -886,7 +889,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel sPassG1;
     private javax.swing.JButton signin1;
     private javax.swing.JPanel user;
+    private javax.swing.JLabel userNameAdmin;
+    private javax.swing.JLabel userNameUser;
     private javax.swing.JPanel userPrivateCondo;
+    private javax.swing.JLabel userType;
     private javax.swing.JTextField username;
     private javax.swing.JLabel warning1;
     // End of variables declaration//GEN-END:variables
