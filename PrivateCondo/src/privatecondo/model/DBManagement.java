@@ -108,12 +108,68 @@ public class DBManagement {
         return roomLive;
     }
     
+    public ArrayList<Problem> queryProblem() throws SQLException{
+        ArrayList<Problem> problems = new ArrayList<Problem>();
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM problems p" +
+            " JOIN users u ON u.userid=p.user_id" +
+            " JOiN problemhandler ph ON ph.problem_id=p.problem_id" +
+            " JOiN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
+            " WHERE (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
+        
+       
+        while(rs.next()){
+            Problem p = new Problem();
+            p.setTopic(rs.getString("topic"));
+            p.setDescription(rs.getString("description"));
+            p.setProblemId(rs.getInt("problem_id"));
+            p.setReportDate(rs.getDate("handleDate"));
+            User reporter = new User();
+            reporter.setUserId(rs.getInt("userId"));
+            reporter.setFname(rs.getString("fname"));
+            reporter.setLname(rs.getString("lname"));
+            p.setReporter(reporter);
+            p.setStatusType(rs.getInt("problemstatus_id"));
+            p.setStatusTypeStr(rs.getString("ps.problemstatus_name"));
+            problems.add(p);
+        }
+        return problems;
+    }
+    
+    public ArrayList<Problem> queryProblemByUser(int userId) throws SQLException{
+        ArrayList<Problem> problems = new ArrayList<Problem>();
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM problems p" +
+            " JOIN users u ON u.userid=p.user_id" +
+            " JOiN problemhandler ph ON ph.problem_id=p.problem_id" +
+            " JOiN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
+            " WHERE userId="+userId+" AND (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
+        
+       
+        while(rs.next()){
+            Problem p = new Problem();
+            p.setTopic(rs.getString("topic"));
+            p.setDescription(rs.getString("description"));
+            p.setProblemId(rs.getInt("problem_id"));
+            p.setReportDate(rs.getDate("handleDate"));
+            User reporter = new User();
+            reporter.setUserId(rs.getInt("userId"));
+            reporter.setFname(rs.getString("fname"));
+            reporter.setLname(rs.getString("lname"));
+            p.setReporter(reporter);
+            p.setStatusType(rs.getInt("problemstatus_id"));
+            p.setStatusTypeStr(rs.getString("ps.problemstatus_name"));
+            problems.add(p);
+        }
+        return problems;
+    }
+    
     public static void main(String[] args) throws Exception {
         //test ja 
         DBManagement dbm = new DBManagement();
         dbm.createConnection();
         User activeuser = dbm.login("jillion", "1234");
-        System.out.println(activeuser);
+        System.out.println(dbm.queryProblemByUser(1));
 //        ArrayList<News> list = dbm.queryNews();
 //        for(int i=0;i<list.size();i++){
 //            System.out.println(list.toArray()[i]);
