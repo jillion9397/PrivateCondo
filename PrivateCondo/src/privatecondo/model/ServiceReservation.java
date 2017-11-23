@@ -15,14 +15,16 @@ public class ServiceReservation {
     private int reserveId;
     private Date reserveDate;
     private WorkTime workTime;
+    private Room room;
 
     public ServiceReservation() {
     }
 
-    public ServiceReservation(int reserveId, Date reserveDate, WorkTime workTime) {
+    public ServiceReservation(int reserveId, Date reserveDate, WorkTime workTime, Room room) {
         this.reserveId = reserveId;
         this.reserveDate = reserveDate;
         this.workTime = workTime;
+        this.room = room;
     }
 
     public int getReserveId() {
@@ -49,10 +51,20 @@ public class ServiceReservation {
         this.workTime = workTime;
     }
 
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     @Override
     public String toString() {
-        return "ServiceReservation{" + "reserveId=" + reserveId + ", reserveDate=" + reserveDate + ", workTime=" + workTime + '}';
+        return "ServiceReservation{" + "reserveId=" + reserveId + ", reserveDate=" + reserveDate + ", workTime=" + workTime + ", room=" + room + '}';
     }
+
+    
 
     
     
