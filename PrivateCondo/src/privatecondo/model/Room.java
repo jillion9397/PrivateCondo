@@ -69,7 +69,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" + "roomId=" + roomId + ", roomNumber=" + roomNumber + ", floor=" + floor + ", owner=" + owner.getFname() + ", serviceRev=" + serviceRev + '}';
+        return "Room{" + "roomId=" + roomId + ", roomNumber=" + roomNumber + ", floor=" + floor + ", owner="+owner.getFname() + ", serviceRev=" + serviceRev + '}';
     }
 
     
