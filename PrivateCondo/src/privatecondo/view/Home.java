@@ -88,6 +88,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     public void tableListNewsAdmin(ArrayList<News> news) {
+        News n = new News();
         JPanel[] jPanelListsNewAdmin = new JPanel[news.size()];
         JLabel[] jLabelTopicNewAdmin = new JLabel[news.size()];
         JTextArea[] jTextAreaDetailNewAdmin = new JTextArea[news.size()];
@@ -97,6 +98,7 @@ public class Home extends javax.swing.JFrame {
         int y = 20;
 
         for (int i = 0; i < news.size(); i++) {
+
             jPanelListsNewAdmin[i] = new JPanel();
             jPanelListsNewAdmin[i].setBackground(new java.awt.Color(255, 255, 255));
             jPanelListsNewAdmin[i].setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -128,14 +130,75 @@ public class Home extends javax.swing.JFrame {
             jButtonEditNewsAdmin[i] = new JButton();
             jButtonEditNewsAdmin[i].setText("Edit");
             jPanelListsNewAdmin[i].add(jButtonEditNewsAdmin[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, -1));
+            
+            
+            n.setTopic(news.get(i).getTopic());
+            n.setDescription(news.get(i).getDescription());
+            n.setAnnounceDate(news.get(i).getAnnounceDate());
+            n.setNewsId(news.get(i).getNewsId());
 
             jPanelListNewsAdmin.add(jPanelListsNewAdmin[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y, 500, 140));
             y += 160;
             jPanelNewAdmin.add(jScrollPaneNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 320));
 
+            jButtonEditNewsAdmin[i].addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    setPanel();
+                    editNews(n);
+                }
+            });
+
         }
 
         jScrollPaneNewAdmin.setViewportView(jPanelListNewsAdmin);
+    }
+
+    public void editNews(News news) {
+        jTextFieldEditTopicNew.setText(news.getTopic());
+        jTextAreaEditContentNew.setText(news.getDescription());
+        
+        jButtonEditNews.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    dbm.createConnection();
+                    news.setTopic(jTextFieldEditTopicNew.getText());
+                    
+                    news.setDescription(jTextAreaEditContentNew.getText());
+                    
+                    System.out.println(news.toString());
+                    dbm.editNews(news);
+                    dbm.disconnect();
+                    
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
+
+    public void setPanel() {
+        
+        homePrivateCondo.setVisible(false);
+        adminPrivateCondo.setVisible(true);
+        userPrivateCondo.setVisible(false);
+        login.setVisible(false);
+        jPanelAdmin.setVisible(true);
+        jPanelEditNew.setVisible(true);
+        jPanelAddNew.setVisible(false);
+        jPanelNewAdmin.setVisible(false);
+        jPanelReportAdmin.setVisible(false);
+        jPanelRoomServiceAdmin.setVisible(false);
+        jPanelLeftMenuAdmin.setVisible(true);
+        jPanelHeadMenuAdmin.setVisible(true);
+        jLabelNewAdmin.setVisible(false);
+        jLabelAddNew.setVisible(false);
+        jLabelEditNew.setVisible(true);
+        jLabelReport.setVisible(false);
+        jLabelRoomSVadmin.setVisible(false);
+        userNameAdmin.setText(activeUser.getFname());
     }
 
     /**
@@ -162,6 +225,14 @@ public class Home extends javax.swing.JFrame {
         jLabelRoomSVadmin = new javax.swing.JLabel();
         userNameAdmin = new javax.swing.JLabel();
         jPanelAdmin = new javax.swing.JPanel();
+        jPanelEditNew = new javax.swing.JPanel();
+        jLabelEditNewTopic = new javax.swing.JLabel();
+        jLabelEditNewDescription = new javax.swing.JLabel();
+        jTextFieldEditTopicNew = new javax.swing.JTextField();
+        jScrollPaneReportDes2 = new javax.swing.JScrollPane();
+        jTextAreaEditContentNew = new javax.swing.JTextArea();
+        jButtonEditNews = new javax.swing.JButton();
+        jPanelReportAdmin = new javax.swing.JPanel();
         jPanelNewAdmin = new javax.swing.JPanel();
         jScrollPaneNewAdmin = new javax.swing.JScrollPane();
         jPanelListNewsAdmin = new javax.swing.JPanel();
@@ -173,14 +244,6 @@ public class Home extends javax.swing.JFrame {
         jScrollPaneReportDes1 = new javax.swing.JScrollPane();
         jTextAreaContentNew = new javax.swing.JTextArea();
         jButtonAddNews = new javax.swing.JButton();
-        jPanelEditNew = new javax.swing.JPanel();
-        jLabelEditNewTopic = new javax.swing.JLabel();
-        jLabelEditNewDescription = new javax.swing.JLabel();
-        jTextFieldEditTopicNew = new javax.swing.JTextField();
-        jScrollPaneReportDes2 = new javax.swing.JScrollPane();
-        jTextAreaEditContentNew = new javax.swing.JTextArea();
-        jButtonEditNews = new javax.swing.JButton();
-        jPanelReportAdmin = new javax.swing.JPanel();
         jPanelRoomServiceAdmin = new javax.swing.JPanel();
         userPrivateCondo = new javax.swing.JPanel();
         jPanelHeadMenu = new javax.swing.JPanel();
@@ -325,6 +388,36 @@ public class Home extends javax.swing.JFrame {
 
         jPanelAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanelEditNew.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelEditNew.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelEditNewTopic.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelEditNewTopic.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelEditNewTopic.setText("Topic");
+        jPanelEditNew.add(jLabelEditNewTopic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabelEditNewDescription.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelEditNewDescription.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelEditNewDescription.setText("Description");
+        jPanelEditNew.add(jLabelEditNewDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        jPanelEditNew.add(jTextFieldEditTopicNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 350, 30));
+
+        jTextAreaEditContentNew.setColumns(20);
+        jTextAreaEditContentNew.setRows(5);
+        jScrollPaneReportDes2.setViewportView(jTextAreaEditContentNew);
+
+        jPanelEditNew.add(jScrollPaneReportDes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 350, 210));
+
+        jButtonEditNews.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonEditNews.setText("EDIT");
+        jPanelEditNew.add(jButtonEditNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
+
+        jPanelAdmin.add(jPanelEditNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
+        jPanelReportAdmin.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelReportAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelAdmin.add(jPanelReportAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
         jPanelNewAdmin.setBackground(new java.awt.Color(130, 187, 178));
         jPanelNewAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -390,36 +483,6 @@ public class Home extends javax.swing.JFrame {
         jPanelAddNew.add(jButtonAddNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
 
         jPanelAdmin.add(jPanelAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
-
-        jPanelEditNew.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelEditNew.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelEditNewTopic.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
-        jLabelEditNewTopic.setForeground(new java.awt.Color(43, 64, 57));
-        jLabelEditNewTopic.setText("Topic");
-        jPanelEditNew.add(jLabelEditNewTopic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
-
-        jLabelEditNewDescription.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
-        jLabelEditNewDescription.setForeground(new java.awt.Color(43, 64, 57));
-        jLabelEditNewDescription.setText("Description");
-        jPanelEditNew.add(jLabelEditNewDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
-        jPanelEditNew.add(jTextFieldEditTopicNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 350, 30));
-
-        jTextAreaEditContentNew.setColumns(20);
-        jTextAreaEditContentNew.setRows(5);
-        jScrollPaneReportDes2.setViewportView(jTextAreaEditContentNew);
-
-        jPanelEditNew.add(jScrollPaneReportDes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 350, 210));
-
-        jButtonEditNews.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonEditNews.setText("EDIT");
-        jPanelEditNew.add(jButtonEditNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
-
-        jPanelAdmin.add(jPanelEditNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
-
-        jPanelReportAdmin.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelReportAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanelAdmin.add(jPanelReportAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
 
         jPanelRoomServiceAdmin.setBackground(new java.awt.Color(130, 187, 178));
         jPanelRoomServiceAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
