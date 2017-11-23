@@ -202,7 +202,6 @@ public class DBManagement {
         
         psm.setString(1, p.getTopic());
         psm.setString(2, p.getDescription());
-        System.out.println(datestr);
         psm.setDate(3, new java.sql.Date(p.getReportDate().getTime()));
         psm.setInt(4, p.getReporter().getUserId());
         psm.setInt(5, p.getReporter().getRoomLive().getRoomId());
