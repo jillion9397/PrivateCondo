@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JComboBox;
@@ -164,12 +166,73 @@ public class DBManagement {
         return problems;
     }
     
+    public void addNews(News n,int ancId) throws SQLException{
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        
+        String datestr = sdf.format(n.getAnnounceDate());
+        PreparedStatement psm=null;
+        psm = conn.prepareStatement("insert into news (news_topic,news_description,announceDate,announcer_Id) value (?,?,?,?)");
+        
+        psm.setString(1, n.getTopic());
+        psm.setString(2, n.getDescription());
+        System.out.println(datestr);
+        psm.setDate(3, new java.sql.Date(n.getAnnounceDate().getTime()));
+        psm.setInt(4, ancId);
+        
+        psm.executeUpdate();
+    }
+    
+    public void editNews(News news) throws SQLException{
+        Statement stm=null;
+        stm = conn.createStatement();
+        stm.execute("UPDATE news SET news_topic='"+news.getTopic()+"' ,news_description='"+news.getDescription()+"' WHERE news_id="+news.getNewsId());
+    }
+    
+    public void addProblem(Problem p) throws SQLException{
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        
+        String datestr = sdf.format(p.getReportDate());
+        PreparedStatement psm=null;
+        psm = conn.prepareStatement("insert into problems (topic,description,reportDate,user_id,room_id) value (?,?,?,?,?)");
+        
+        psm.setString(1, p.getTopic());
+        psm.setString(2, p.getDescription());
+        System.out.println(datestr);
+        psm.setDate(3, new java.sql.Date(p.getReportDate().getTime()));
+        psm.setInt(4, p.getReporter().getUserId());
+        psm.setInt(5, p.getReporter().getRoomLive().getRoomId());
+        
+        psm.executeUpdate();
+    }
     public static void main(String[] args) throws Exception {
         //test ja 
         DBManagement dbm = new DBManagement();
         dbm.createConnection();
         User activeuser = dbm.login("jillion", "1234");
-        System.out.println(dbm.queryProblemByUser(1));
+        System.out.println(activeuser);
+//        Room r = new Room();
+//        r.setRoomId(13);
+//        User usr = new User();
+//        usr.setUserId(2);
+//        usr.setFname("jirapa");
+//        usr.setRoomLive(r);
+//        Problem p = new Problem();
+//        
+//        p.setReporter(usr);
+//        p.setTopic("ฝ้าในห้องหลุด");
+//        p.setDescription("ในห้องมีฝ้าหลุดประมาณ2-3แผ่นค่ะ");
+//        p.setReportDate(new Date());
+//        
+//        dbm.addProblem(p);
+//        News news = new News();
+//        news.setNewsId(2);
+//        news.setTopic("test");
+//        news.setDescription("weeeeeeeeeeeeeeeeeeeee");
+//        news.setAnnounceDate(new Date());
+//        dbm.addNews(news,2);
+//        dbm.editNews(news);
+
 //        ArrayList<News> list = dbm.queryNews();
 //        for(int i=0;i<list.size();i++){
 //            System.out.println(list.toArray()[i]);
