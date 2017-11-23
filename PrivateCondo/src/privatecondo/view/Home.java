@@ -1,9 +1,14 @@
 package privatecondo.view;
 
+import java.awt.Color;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import privatecondo.model.DBManagement;
+import privatecondo.model.News;
 import privatecondo.model.User;
 
 /*
@@ -11,12 +16,12 @@ import privatecondo.model.User;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author January
  */
 public class Home extends javax.swing.JFrame {
+
     private User activeUser;
     private DBManagement dbm;
 
@@ -40,6 +45,44 @@ public class Home extends javax.swing.JFrame {
         jPanelReportProList.setVisible(false);
         jPanelSelectRoomSV.setVisible(false);
         dbm = new DBManagement();
+    }
+
+    public void tableNewUser(ArrayList<News> news) {
+//        ArrayList<News> news = newsDB;
+        System.out.println(news);
+        JPanel[] jPanelNewList = new JPanel[news.size()];
+        JLabel[] jLabelTopicNew = new JLabel[news.size()];
+        JLabel[] jLabelDetailNew = new JLabel[news.size()];
+        JLabel[] jLabelPicSetting = new JLabel[news.size()];
+        int y = 20;
+        
+        for (int i = 0; i < news.size(); i++) {
+            jPanelNewList[i] = new JPanel();
+            jPanelNewList[i].setBackground(new java.awt.Color(255, 255, 255));
+            jPanelNewList[i].setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            
+            jLabelDetailNew[i] = new JLabel();
+            jLabelDetailNew[i].setFont(new java.awt.Font("Leelawadee", 0, 12));
+            jLabelDetailNew[i].setForeground(new java.awt.Color(71, 82, 94));
+            jLabelDetailNew[i].setText(news.get(i).getDescription());
+            jPanelNewList[i].add(jLabelDetailNew[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 450, 50));
+            
+            jLabelTopicNew[i] = new JLabel();
+            jLabelTopicNew[i].setFont(new java.awt.Font("Leelawadee", 1, 14)); // NOI18N
+            jLabelTopicNew[i].setForeground(new java.awt.Color(71, 82, 94));
+            jLabelTopicNew[i].setText(news.get(i).getTopic());
+            jPanelNewList[i].add(jLabelTopicNew[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 380, 20));
+            
+            jLabelPicSetting[i] = new JLabel();
+            jLabelPicSetting[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/privatecondo/view/Picture/002-settings.png"))); // NOI18N
+            jPanelNewList[i].add(jLabelPicSetting[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+            jPanelDynamicNewUser.add(jPanelNewList[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y, 510, 100));
+            y+=120;
+            
+            jPanelNewsHome.add(jScrollPaneNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+        }
+        jScrollPaneNewUser.setViewportView(jPanelDynamicNewUser);
     }
 
     /**
@@ -66,6 +109,9 @@ public class Home extends javax.swing.JFrame {
         jButtonHome = new javax.swing.JButton();
         jButtonReport = new javax.swing.JButton();
         user = new javax.swing.JPanel();
+        jPanelNewsHome = new javax.swing.JPanel();
+        jScrollPaneNewUser = new javax.swing.JScrollPane();
+        jPanelDynamicNewUser = new javax.swing.JPanel();
         jPanelRoomSV = new javax.swing.JPanel();
         jLabelTime = new javax.swing.JLabel();
         jComboBoxDate = new javax.swing.JComboBox<>();
@@ -75,7 +121,6 @@ public class Home extends javax.swing.JFrame {
         jLabelDateSelect = new javax.swing.JLabel();
         jPanelSelectRoomSV = new javax.swing.JPanel();
         jButtonPreviousToRoomSV = new javax.swing.JButton();
-        jPanelNewsHome = new javax.swing.JPanel();
         jPanelReport = new javax.swing.JPanel();
         jLabelReportDescription = new javax.swing.JLabel();
         jLabelReportTopic = new javax.swing.JLabel();
@@ -180,7 +225,8 @@ public class Home extends javax.swing.JFrame {
 
         userNameUser.setFont(new java.awt.Font("Leelawadee", 1, 14)); // NOI18N
         userNameUser.setForeground(new java.awt.Color(255, 255, 255));
-        jPanelHeadMenu.add(userNameUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 140, 30));
+        userNameUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanelHeadMenu.add(userNameUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 130, 30));
 
         userPrivateCondo.add(jPanelHeadMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 550, 120));
 
@@ -223,6 +269,17 @@ public class Home extends javax.swing.JFrame {
         userPrivateCondo.add(jPanelLeftMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 490));
 
         user.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelNewsHome.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelNewsHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelDynamicNewUser.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelDynamicNewUser.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPaneNewUser.setViewportView(jPanelDynamicNewUser);
+
+        jPanelNewsHome.add(jScrollPaneNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
+        user.add(jPanelNewsHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
 
         jPanelRoomSV.setBackground(new java.awt.Color(130, 187, 178));
         jPanelRoomSV.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,10 +333,6 @@ public class Home extends javax.swing.JFrame {
         jPanelSelectRoomSV.add(jButtonPreviousToRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
 
         user.add(jPanelSelectRoomSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
-
-        jPanelNewsHome.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelNewsHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        user.add(jPanelNewsHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
 
         jPanelReport.setBackground(new java.awt.Color(130, 187, 178));
         jPanelReport.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -397,7 +450,15 @@ public class Home extends javax.swing.JFrame {
         sPassB1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jPanelLoginHome.add(sPassB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, 10));
 
-        password.setText("jPasswordField1");
+        password.setText("Password");
+        password.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordFocusLost(evt);
+            }
+        });
         jPanelLoginHome.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 240, 30));
 
         login.add(jPanelLoginHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 540, 490));
@@ -689,10 +750,16 @@ public class Home extends javax.swing.JFrame {
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
         // TODO add your handling code here:
+        if (username.getText().equals("Username")) {
+            username.setText("");
+        }
     }//GEN-LAST:event_usernameFocusGained
 
     private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
         // TODO add your handling code here:
+        if (username.getText().equals("") || username.getText().length() == 0) {
+            username.setText("Username");
+        }
     }//GEN-LAST:event_usernameFocusLost
 
     private void signin1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signin1MouseEntered
@@ -708,49 +775,60 @@ public class Home extends javax.swing.JFrame {
             // TODO add your handling code here:
             dbm.createConnection();
             activeUser = dbm.login(username.getText(), password.getText());
-            dbm.disconnect();
+            
         } catch (SQLException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if(activeUser.getUserType()==1){//user
-            homePrivateCondo.setVisible(false);
-            adminPrivateCondo.setVisible(false);
-            userPrivateCondo.setVisible(true);
-            login.setVisible(false);
-            jPanelHeadMenu.setVisible(true);
-            jLabelRoomSV.setVisible(false);
-            jLabelReportList.setVisible(false);
-            jLabelReport1.setVisible(false);
-            jLabelHome.setVisible(true);
-            jPanelReport.setVisible(false);
-            jPanelNewsHome.setVisible(true);
-            jPanelRoomSV.setVisible(false);
-            jPanelReportProList.setVisible(false);
-            jPanelSelectRoomSV.setVisible(false);
-            userNameUser.setText(activeUser.getFname());
-//            userType.setText(activeUser.get);
-        }else{
-            homePrivateCondo.setVisible(false);
-            adminPrivateCondo.setVisible(true);
-            userPrivateCondo.setVisible(false);
-            login.setVisible(false);
-            jPanelAdmin.setVisible(true);
-            jPanelEditNew.setVisible(false);
-            jPanelAddNew.setVisible(false);
-            jPanelNewAdmin.setVisible(true);
-            jPanelReportAdmin.setVisible(false);
-            jPanelRoomServiceAdmin.setVisible(false);
-            jPanelLeftMenuAdmin.setVisible(true);
-            jPanelHeadMenuAdmin.setVisible(true);
-            jLabelNewAdmin.setVisible(true);
-            jLabelAddNew.setVisible(false);
-            jLabelEditNew.setVisible(false);
-            jLabelReport.setVisible(false);
-            jLabelRoomSVadmin.setVisible(false);
-            userNameAdmin.setText(activeUser.getFname());
+        if (activeUser == null) {
+            warning1.setVisible(true);
+        } else {
+            if (activeUser.getUserType() == 1) {//user
+                homePrivateCondo.setVisible(false);
+                adminPrivateCondo.setVisible(false);
+                userPrivateCondo.setVisible(true);
+                login.setVisible(false);
+                jPanelHeadMenu.setVisible(true);
+                jLabelRoomSV.setVisible(false);
+                jLabelReportList.setVisible(false);
+                jLabelReport1.setVisible(false);
+                jLabelHome.setVisible(true);
+                jPanelReport.setVisible(false);
+                jPanelNewsHome.setVisible(true);
+                jPanelRoomSV.setVisible(false);
+                jPanelReportProList.setVisible(false);
+                jPanelSelectRoomSV.setVisible(false);
+                userNameUser.setText(activeUser.getFname() + " " + activeUser.getLname());
+                //            userType.setText(activeUser.get);
+                try {
+                    this.tableNewUser(dbm.queryNews());
+                    dbm.disconnect();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                homePrivateCondo.setVisible(false);
+                adminPrivateCondo.setVisible(true);
+                userPrivateCondo.setVisible(false);
+                login.setVisible(false);
+                jPanelAdmin.setVisible(true);
+                jPanelEditNew.setVisible(false);
+                jPanelAddNew.setVisible(false);
+                jPanelNewAdmin.setVisible(true);
+                jPanelReportAdmin.setVisible(false);
+                jPanelRoomServiceAdmin.setVisible(false);
+                jPanelLeftMenuAdmin.setVisible(true);
+                jPanelHeadMenuAdmin.setVisible(true);
+                jLabelNewAdmin.setVisible(true);
+                jLabelAddNew.setVisible(false);
+                jLabelEditNew.setVisible(false);
+                jLabelReport.setVisible(false);
+                jLabelRoomSVadmin.setVisible(false);
+                userNameAdmin.setText(activeUser.getFname());
+            }
         }
+
     }//GEN-LAST:event_signin1ActionPerformed
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
@@ -773,7 +851,22 @@ public class Home extends javax.swing.JFrame {
         jPanelRoomSV.setVisible(false);
         jPanelReportProList.setVisible(false);
         jPanelSelectRoomSV.setVisible(false);
+        warning1.setVisible(false);
     }//GEN-LAST:event_jButtonLoginActionPerformed
+
+    private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
+        // TODO add your handling code here:
+        if (password.getText().equals("Password")) {
+            password.setText("");
+        }
+    }//GEN-LAST:event_passwordFocusGained
+
+    private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
+        // TODO add your handling code here:
+        if (password.getText().equals("") || password.getText().length() == 0) {
+            password.setText("Password");
+        }
+    }//GEN-LAST:event_passwordFocusLost
 
     /**
      * @param args the command line arguments
@@ -854,6 +947,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelUserProfileAdmin;
     private javax.swing.JPanel jPanelAddNew;
     private javax.swing.JPanel jPanelAdmin;
+    private javax.swing.JPanel jPanelDynamicNewUser;
     private javax.swing.JPanel jPanelEditNew;
     private javax.swing.JPanel jPanelFooter;
     private javax.swing.JPanel jPanelHeadHome;
@@ -871,6 +965,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelRoomSV;
     private javax.swing.JPanel jPanelRoomServiceAdmin;
     private javax.swing.JPanel jPanelSelectRoomSV;
+    private javax.swing.JScrollPane jScrollPaneNewUser;
     private javax.swing.JScrollPane jScrollPaneReportDes;
     private javax.swing.JScrollPane jScrollPaneReportDes1;
     private javax.swing.JScrollPane jScrollPaneReportDes2;
