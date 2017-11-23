@@ -202,19 +202,58 @@ public class DBManagement {
         
         psm.setString(1, p.getTopic());
         psm.setString(2, p.getDescription());
-        System.out.println(datestr);
         psm.setDate(3, new java.sql.Date(p.getReportDate().getTime()));
         psm.setInt(4, p.getReporter().getUserId());
         psm.setInt(5, p.getReporter().getRoomLive().getRoomId());
         
         psm.executeUpdate();
     }
+    
+    public ArrayList<ServiceReservation> queryReserve() throws SQLException{
+        
+        ArrayList<ServiceReservation> services = new ArrayList<ServiceReservation>(); 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM servicereservation sr"
+                + " JOIN worktimes w ON sr.worktime_id=w.worktimeid"
+                + " JOIN roomservicestaffs rs ON rs.staffId=w.worktime_staffId"
+                + " JOIN rooms r ON r.roomId=sr.rooms_roomId"
+                + " JOIN userroomrelation ur ON r.roomId=ur.rooms_roomId"
+                + " JOIN Users u ON u.userId=ur.user_userId"
+                + " WHERE serviceDate>='"+sdf.format(new Date())+"' ORDER BY serviceDate"
+                        + " AND relationtype_typeid=1"); 
+        while(rs.next()){
+            ServiceReservation s = new ServiceReservation();
+            Room r = new Room();
+            WorkTime wt = new WorkTime();
+            User u = new User();
+            RoomServiceStaff staff = new RoomServiceStaff();
+            staff.setFname(rs.getString("rs.fname"));
+            staff.setLname(rs.getString("rs.lname"));
+            wt.setStartTime(rs.getTime("startTime"));
+            wt.setEndTime(rs.getTime("endTime"));
+            wt.setWorkTimeId(rs.getInt("worktimeid"));
+            wt.setStaff(staff);
+            u.setFname(rs.getString("u.fname"));
+            u.setFname(rs.getString("u.lname"));
+            r.setRoomNumber(rs.getString("roomNum"));
+            r.setOwner(u);
+            s.setWorkTime(wt);
+            s.setReserveDate(rs.getDate("serviceDate"));
+            s.setRoom(r);
+            s.setReserveDate(rs.getDate("serviceDate"));
+            s.setReserveId(rs.getInt("reserveId"));
+            services.add(s);
+        }
+        return services;
+        
+    }
     public static void main(String[] args) throws Exception {
         //test ja 
         DBManagement dbm = new DBManagement();
         dbm.createConnection();
         User activeuser = dbm.login("jillion", "1234");
-        System.out.println(dbm.queryNews());
+        System.out.println(dbm.queryReserve());
 //        Room r = new Room();
 //        r.setRoomId(13);
 //        User usr = new User();
