@@ -92,6 +92,11 @@ public class Problem {
     public void setStatusTypeStr(String statusTypeStr) {
         this.statusTypeStr = statusTypeStr;
     }
+
+    @Override
+    public String toString() {
+        return "Problem{" + "problemId=" + problemId + ", topic=" + topic + ", description=" + description + ", reportDate=" + reportDate + ", Reporter=" + Reporter + ", statusType=" + statusType + ", statusTypeStr=" + statusTypeStr + '}';
+    }
     
     
     

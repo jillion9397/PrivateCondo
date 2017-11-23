@@ -110,6 +110,62 @@ public class DBManagement {
         return roomLive;
     }
     
+    public ArrayList<Problem> queryProblem() throws SQLException{
+        ArrayList<Problem> problems = new ArrayList<Problem>();
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM problems p" +
+            " JOIN users u ON u.userid=p.user_id" +
+            " JOiN problemhandler ph ON ph.problem_id=p.problem_id" +
+            " JOiN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
+            " WHERE (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
+        
+       
+        while(rs.next()){
+            Problem p = new Problem();
+            p.setTopic(rs.getString("topic"));
+            p.setDescription(rs.getString("description"));
+            p.setProblemId(rs.getInt("problem_id"));
+            p.setReportDate(rs.getDate("handleDate"));
+            User reporter = new User();
+            reporter.setUserId(rs.getInt("userId"));
+            reporter.setFname(rs.getString("fname"));
+            reporter.setLname(rs.getString("lname"));
+            p.setReporter(reporter);
+            p.setStatusType(rs.getInt("problemstatus_id"));
+            p.setStatusTypeStr(rs.getString("ps.problemstatus_name"));
+            problems.add(p);
+        }
+        return problems;
+    }
+    
+    public ArrayList<Problem> queryProblemByUser(int userId) throws SQLException{
+        ArrayList<Problem> problems = new ArrayList<Problem>();
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM problems p" +
+            " JOIN users u ON u.userid=p.user_id" +
+            " JOiN problemhandler ph ON ph.problem_id=p.problem_id" +
+            " JOiN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
+            " WHERE userId="+userId+" AND (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
+        
+       
+        while(rs.next()){
+            Problem p = new Problem();
+            p.setTopic(rs.getString("topic"));
+            p.setDescription(rs.getString("description"));
+            p.setProblemId(rs.getInt("problem_id"));
+            p.setReportDate(rs.getDate("handleDate"));
+            User reporter = new User();
+            reporter.setUserId(rs.getInt("userId"));
+            reporter.setFname(rs.getString("fname"));
+            reporter.setLname(rs.getString("lname"));
+            p.setReporter(reporter);
+            p.setStatusType(rs.getInt("problemstatus_id"));
+            p.setStatusTypeStr(rs.getString("ps.problemstatus_name"));
+            problems.add(p);
+        }
+        return problems;
+    }
+    
     public void addNews(News n,int ancId) throws SQLException{
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -154,7 +210,7 @@ public class DBManagement {
         DBManagement dbm = new DBManagement();
         dbm.createConnection();
         User activeuser = dbm.login("jillion", "1234");
-        System.out.println(activeuser);
+        System.out.println(dbm.queryNews());
 //        Room r = new Room();
 //        r.setRoomId(13);
 //        User usr = new User();
@@ -190,7 +246,7 @@ public class DBManagement {
     public ArrayList<News> queryNews() throws SQLException{
          ArrayList<News> news = new ArrayList<News>(); 
         Statement stm = conn.createStatement();
-        ResultSet rs = stm.executeQuery("SELECT * FROM news"); 
+        ResultSet rs = stm.executeQuery("SELECT * FROM news Order By announceDate DESC"); 
         while(rs.next()){
             News n = new News();
             n.setTopic(rs.getString("news_topic"));

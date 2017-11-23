@@ -14,15 +14,15 @@ import java.util.Date;
 public class ServiceReservation {
     private int reserveId;
     private Date reserveDate;
-    private WorkTime workTimeId;
+    private WorkTime workTime;
 
     public ServiceReservation() {
     }
 
-    public ServiceReservation(int reserveId, Date reserveDate, WorkTime workTimeId) {
+    public ServiceReservation(int reserveId, Date reserveDate, WorkTime workTime) {
         this.reserveId = reserveId;
         this.reserveDate = reserveDate;
-        this.workTimeId = workTimeId;
+        this.workTime = workTime;
     }
 
     public int getReserveId() {
@@ -41,13 +41,19 @@ public class ServiceReservation {
         this.reserveDate = reserveDate;
     }
 
-    public WorkTime getWorkTimeId() {
-        return workTimeId;
+    public WorkTime getWorkTime() {
+        return workTime;
     }
 
-    public void setWorkTimeId(WorkTime workTimeId) {
-        this.workTimeId = workTimeId;
+    public void setWorkTime(WorkTime workTime) {
+        this.workTime = workTime;
     }
+
+    @Override
+    public String toString() {
+        return "ServiceReservation{" + "reserveId=" + reserveId + ", reserveDate=" + reserveDate + ", workTime=" + workTime + '}';
+    }
+
     
     
 }
