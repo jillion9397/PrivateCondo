@@ -110,14 +110,15 @@ public class DBManagement {
         return roomLive;
     }
     
+    //One-Side Outer Join
     public ArrayList<Problem> queryProblem() throws SQLException{
         ArrayList<Problem> problems = new ArrayList<Problem>();
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT * FROM problems p" +
             " JOIN users u ON u.userid=p.user_id" +
-            " JOiN problemhandler ph ON ph.problem_id=p.problem_id" +
-            " JOiN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
-            " WHERE (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
+            " LEFT JOIN problemhandler ph ON ph.problem_id=p.problem_id" +
+            " LEFT JOIN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
+            " WHERE ph.problem_id is null OR (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
         
        
         while(rs.next()){
@@ -143,9 +144,9 @@ public class DBManagement {
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT * FROM problems p" +
             " JOIN users u ON u.userid=p.user_id" +
-            " JOiN problemhandler ph ON ph.problem_id=p.problem_id" +
-            " JOiN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
-            " WHERE userId="+userId+" AND (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
+            " LEFT JOIN problemhandler ph ON ph.problem_id=p.problem_id" +
+            " LEFT JOIN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
+            " ph.problem_id is null OR WHERE userId="+userId+" AND (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
         
        
         while(rs.next()){
