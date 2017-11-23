@@ -3,6 +3,7 @@ package privatecondo.view;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -118,7 +119,7 @@ public class Home extends javax.swing.JFrame {
             jTextAreaDetailNewAdmin[i].setForeground(new java.awt.Color(71, 82, 94));
             jTextAreaDetailNewAdmin[i].setRows(5);
             jTextAreaDetailNewAdmin[i].setAutoscrolls(false);
-            
+
             jScrollPaneTextFile[i] = new JScrollPane();
             jScrollPaneTextFile[i].setViewportView(jTextAreaDetailNewAdmin[i]);
 
@@ -129,12 +130,12 @@ public class Home extends javax.swing.JFrame {
             jPanelListsNewAdmin[i].add(jButtonEditNewsAdmin[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, -1));
 
             jPanelListNewsAdmin.add(jPanelListsNewAdmin[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y, 500, 140));
-            y+=160;
-            jPanelNewAdmin.add(jScrollPaneNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
-            
+            y += 160;
+            jPanelNewAdmin.add(jScrollPaneNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 320));
+
         }
-        
-         jScrollPaneNewAdmin.setViewportView(jPanelListNewsAdmin);
+
+        jScrollPaneNewAdmin.setViewportView(jPanelListNewsAdmin);
     }
 
     /**
@@ -164,13 +165,7 @@ public class Home extends javax.swing.JFrame {
         jPanelNewAdmin = new javax.swing.JPanel();
         jScrollPaneNewAdmin = new javax.swing.JScrollPane();
         jPanelListNewsAdmin = new javax.swing.JPanel();
-        jPanelEditNew = new javax.swing.JPanel();
-        jLabelEditNewTopic = new javax.swing.JLabel();
-        jLabelEditNewDescription = new javax.swing.JLabel();
-        jTextFieldEditTopicNew = new javax.swing.JTextField();
-        jScrollPaneReportDes2 = new javax.swing.JScrollPane();
-        jTextAreaEditContentNew = new javax.swing.JTextArea();
-        jButtonEditNews = new javax.swing.JButton();
+        jButtonAddNewsAdmin = new javax.swing.JButton();
         jPanelAddNew = new javax.swing.JPanel();
         jLabelNewDescription = new javax.swing.JLabel();
         jLabelNewTopic = new javax.swing.JLabel();
@@ -178,6 +173,13 @@ public class Home extends javax.swing.JFrame {
         jScrollPaneReportDes1 = new javax.swing.JScrollPane();
         jTextAreaContentNew = new javax.swing.JTextArea();
         jButtonAddNews = new javax.swing.JButton();
+        jPanelEditNew = new javax.swing.JPanel();
+        jLabelEditNewTopic = new javax.swing.JLabel();
+        jLabelEditNewDescription = new javax.swing.JLabel();
+        jTextFieldEditTopicNew = new javax.swing.JTextField();
+        jScrollPaneReportDes2 = new javax.swing.JScrollPane();
+        jTextAreaEditContentNew = new javax.swing.JTextArea();
+        jButtonEditNews = new javax.swing.JButton();
         jPanelReportAdmin = new javax.swing.JPanel();
         jPanelRoomServiceAdmin = new javax.swing.JPanel();
         userPrivateCondo = new javax.swing.JPanel();
@@ -330,9 +332,64 @@ public class Home extends javax.swing.JFrame {
         jPanelListNewsAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jScrollPaneNewAdmin.setViewportView(jPanelListNewsAdmin);
 
-        jPanelNewAdmin.add(jScrollPaneNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+        jPanelNewAdmin.add(jScrollPaneNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 330));
+
+        jButtonAddNewsAdmin.setText("ADD");
+        jButtonAddNewsAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddNewsAdminActionPerformed(evt);
+            }
+        });
+        jPanelNewAdmin.add(jButtonAddNewsAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
 
         jPanelAdmin.add(jPanelNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
+        jPanelAddNew.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelAddNew.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelNewDescription.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelNewDescription.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelNewDescription.setText("Description");
+        jPanelAddNew.add(jLabelNewDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+
+        jLabelNewTopic.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelNewTopic.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelNewTopic.setText("Topic");
+        jPanelAddNew.add(jLabelNewTopic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jTextFieldTopicNew.setForeground(new java.awt.Color(102, 102, 102));
+        jTextFieldTopicNew.setText("Insert your head new");
+        jTextFieldTopicNew.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldTopicNewFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldTopicNewFocusLost(evt);
+            }
+        });
+        jTextFieldTopicNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTopicNewActionPerformed(evt);
+            }
+        });
+        jPanelAddNew.add(jTextFieldTopicNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 350, 30));
+
+        jTextAreaContentNew.setColumns(20);
+        jTextAreaContentNew.setRows(5);
+        jScrollPaneReportDes1.setViewportView(jTextAreaContentNew);
+
+        jPanelAddNew.add(jScrollPaneReportDes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 350, 210));
+
+        jButtonAddNews.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonAddNews.setText("ADD");
+        jButtonAddNews.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddNewsActionPerformed(evt);
+            }
+        });
+        jPanelAddNew.add(jButtonAddNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
+
+        jPanelAdmin.add(jPanelAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
 
         jPanelEditNew.setBackground(new java.awt.Color(130, 187, 178));
         jPanelEditNew.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -359,34 +416,6 @@ public class Home extends javax.swing.JFrame {
         jPanelEditNew.add(jButtonEditNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
 
         jPanelAdmin.add(jPanelEditNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
-
-        jPanelAddNew.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelAddNew.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelNewDescription.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
-        jLabelNewDescription.setForeground(new java.awt.Color(43, 64, 57));
-        jLabelNewDescription.setText("Description");
-        jPanelAddNew.add(jLabelNewDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
-
-        jLabelNewTopic.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
-        jLabelNewTopic.setForeground(new java.awt.Color(43, 64, 57));
-        jLabelNewTopic.setText("Topic");
-        jPanelAddNew.add(jLabelNewTopic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
-
-        jTextFieldTopicNew.setText("Insert your head new");
-        jPanelAddNew.add(jTextFieldTopicNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 350, 30));
-
-        jTextAreaContentNew.setColumns(20);
-        jTextAreaContentNew.setRows(5);
-        jScrollPaneReportDes1.setViewportView(jTextAreaContentNew);
-
-        jPanelAddNew.add(jScrollPaneReportDes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 350, 210));
-
-        jButtonAddNews.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonAddNews.setText("ADD");
-        jPanelAddNew.add(jButtonAddNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
-
-        jPanelAdmin.add(jPanelAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
 
         jPanelReportAdmin.setBackground(new java.awt.Color(130, 187, 178));
         jPanelReportAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -935,6 +964,61 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_passwordFocusLost
 
+    private void jTextFieldTopicNewFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldTopicNewFocusGained
+        // TODO add your handling code here:
+        if (jTextFieldTopicNew.getText().equals("Insert your head new")) {
+            jTextFieldTopicNew.setText("");
+            jTextFieldTopicNew.setForeground(new java.awt.Color(71, 82, 94));
+        }
+    }//GEN-LAST:event_jTextFieldTopicNewFocusGained
+
+    private void jTextFieldTopicNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTopicNewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTopicNewActionPerformed
+
+    private void jTextFieldTopicNewFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldTopicNewFocusLost
+        // TODO add your handling code here:
+        if (password.getText().equals("") || password.getText().length() == 0) {
+            password.setText("Insert your head new");
+        }
+    }//GEN-LAST:event_jTextFieldTopicNewFocusLost
+
+    private void jButtonAddNewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddNewsActionPerformed
+        // TODO add your handling code here:
+        News n = new News();
+        Date current = new Date();
+        n.setTopic(jTextFieldTopicNew.getText());
+        n.setDescription(jTextAreaContentNew.getText());
+        n.setAnnounceDate(current);
+        try {
+            dbm.addNews(n, activeUser.getUserId());
+        } catch (SQLException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonAddNewsActionPerformed
+
+    private void jButtonAddNewsAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddNewsAdminActionPerformed
+        // TODO add your handling code here:
+        homePrivateCondo.setVisible(false);
+        adminPrivateCondo.setVisible(true);
+        userPrivateCondo.setVisible(false);
+        login.setVisible(false);
+        jPanelAdmin.setVisible(true);
+        jPanelEditNew.setVisible(false);
+        jPanelAddNew.setVisible(true);
+        jPanelNewAdmin.setVisible(false);
+        jPanelReportAdmin.setVisible(false);
+        jPanelRoomServiceAdmin.setVisible(false);
+        jPanelLeftMenuAdmin.setVisible(true);
+        jPanelHeadMenuAdmin.setVisible(true);
+        jLabelNewAdmin.setVisible(false);
+        jLabelAddNew.setVisible(true);
+        jLabelEditNew.setVisible(false);
+        jLabelReport.setVisible(false);
+        jLabelRoomSVadmin.setVisible(false);
+        userNameAdmin.setText(activeUser.getFname());
+    }//GEN-LAST:event_jButtonAddNewsAdminActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -975,6 +1059,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel homePrivateCondo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddNews;
+    private javax.swing.JButton jButtonAddNewsAdmin;
     private javax.swing.JButton jButtonEditNews;
     private javax.swing.JButton jButtonHome;
     private javax.swing.JButton jButtonHome1;
