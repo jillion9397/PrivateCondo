@@ -185,8 +185,12 @@ public class DBManagement {
     
     public void editNews(News news) throws SQLException{
         Statement stm=null;
+        System.out.println("1"+news.toString());
         stm = conn.createStatement();
+        System.out.println("2"+news.toString());
         stm.execute("UPDATE news SET news_topic='"+news.getTopic()+"' ,news_description='"+news.getDescription()+"' WHERE news_id="+news.getNewsId());
+        System.out.println("3"+news.toString());
+        
     }
     
     public void addProblem(Problem p) throws SQLException{
@@ -198,7 +202,6 @@ public class DBManagement {
         
         psm.setString(1, p.getTopic());
         psm.setString(2, p.getDescription());
-        System.out.println(datestr);
         psm.setDate(3, new java.sql.Date(p.getReportDate().getTime()));
         psm.setInt(4, p.getReporter().getUserId());
         psm.setInt(5, p.getReporter().getRoomLive().getRoomId());
@@ -289,6 +292,7 @@ public class DBManagement {
         ResultSet rs = stm.executeQuery("SELECT * FROM news Order By announceDate DESC"); 
         while(rs.next()){
             News n = new News();
+            n.setNewsId(rs.getInt("news_id"));
             n.setTopic(rs.getString("news_topic"));
             n.setDescription(rs.getString("news_description"));
             n.setAnnounceDate(rs.getDate("announceDate"));
