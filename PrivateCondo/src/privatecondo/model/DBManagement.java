@@ -110,14 +110,15 @@ public class DBManagement {
         return roomLive;
     }
     
+    //One-Side Outer Join
     public ArrayList<Problem> queryProblem() throws SQLException{
         ArrayList<Problem> problems = new ArrayList<Problem>();
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT * FROM problems p" +
             " JOIN users u ON u.userid=p.user_id" +
-            " JOiN problemhandler ph ON ph.problem_id=p.problem_id" +
-            " JOiN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
-            " WHERE (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
+            " LEFT JOIN problemhandler ph ON ph.problem_id=p.problem_id" +
+            " LEFT JOIN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
+            " WHERE ph.problem_id is null OR (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
         
        
         while(rs.next()){
@@ -143,9 +144,9 @@ public class DBManagement {
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT * FROM problems p" +
             " JOIN users u ON u.userid=p.user_id" +
-            " JOiN problemhandler ph ON ph.problem_id=p.problem_id" +
-            " JOiN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
-            " WHERE userId="+userId+" AND (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
+            " LEFT JOIN problemhandler ph ON ph.problem_id=p.problem_id" +
+            " LEFT JOIN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
+            " ph.problem_id is null OR WHERE userId="+userId+" AND (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
         
        
         while(rs.next()){
@@ -271,6 +272,46 @@ public class DBManagement {
         return services;
         
     }
+    
+    public void addRoomReserve(Date serviceDate,int roomId,int worktimeId) throws SQLException{
+        
+        PreparedStatement psm=null;
+        psm = conn.prepareStatement("insert into news (serviceDate,rooms_roomId,worktime_id) value (?,?,?,?)");
+        
+        psm.setDate(1, new java.sql.Date(serviceDate.getTime()));
+        psm.setInt(2, roomId);
+        psm.setInt(3, worktimeId);
+        
+        psm.executeUpdate();
+    }
+    
+    //One-side Full Outer JOIN
+    //using null
+    public ArrayList<WorkTime> queryWorkTime() throws SQLException{
+        ArrayList<WorkTime> worktimeList = new ArrayList<WorkTime>(); 
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM worktimes wt"
+                + " JOIN roomservicestaffs rs ON rs.staffId=wt.worktime_staffId"
+                + " LEFT JOIN servicereservation ss ON wt.worktimeid=ss.worktime_id"
+                + " WHERE ss.worktime_id is null"); 
+        while(rs.next()){
+            WorkTime wt = new WorkTime();
+            RoomServiceStaff staff = new RoomServiceStaff();
+            staff.setFname(rs.getString("rs.fname"));
+            staff.setLname(rs.getString("rs.lname"));
+            staff.setStaffId(rs.getInt("staffId"));
+            wt.setStartTime(rs.getTime("startTime"));
+            wt.setEndTime(rs.getTime("endTime"));
+            wt.setWorkTimeId(rs.getInt("worktimeid"));
+            wt.setStaff(staff);
+            wt.setDayId(rs.getInt("worktime_dayid"));
+
+            worktimeList.add(wt);
+        }
+        return worktimeList;
+    }
+    
     public static void main(String[] args) throws Exception {
         //test ja 
         DBManagement dbm = new DBManagement();
