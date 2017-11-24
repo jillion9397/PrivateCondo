@@ -758,6 +758,11 @@ public class Home extends javax.swing.JFrame {
         jPanelRoomSV.add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
         jComboBoxDate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDateActionPerformed(evt);
+            }
+        });
         jPanelRoomSV.add(jComboBoxDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 190, 30));
 
         jLabelDate.setFont(new java.awt.Font("Leelawadee", 0, 16)); // NOI18N
@@ -1327,6 +1332,11 @@ public class Home extends javax.swing.JFrame {
         jLabelRoomSVadmin.setVisible(false);
         userNameAdmin.setText(activeUser.getFname() + " " + activeUser.getLname());
     }//GEN-LAST:event_jButtonPreviousToNewsActionPerformed
+
+    private void jComboBoxDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDateActionPerformed
+        System.out.println("hello");
+        
+    }//GEN-LAST:event_jComboBoxDateActionPerformed
 
     /**
      * @param args the command line arguments
