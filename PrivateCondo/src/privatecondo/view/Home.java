@@ -92,7 +92,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     public void tableListNewsAdmin(ArrayList<News> news) {
-        News n = new News();
+        
         JPanel[] jPanelListsNewAdmin = new JPanel[news.size()];
         JLabel[] jLabelTopicNewAdmin = new JLabel[news.size()];
         JTextArea[] jTextAreaDetailNewAdmin = new JTextArea[news.size()];
@@ -102,6 +102,7 @@ public class Home extends javax.swing.JFrame {
         int y = 20;
 
         for (int i = 0; i < news.size(); i++) {
+            News n = new News();
 
             jPanelListsNewAdmin[i] = new JPanel();
             jPanelListsNewAdmin[i].setBackground(new java.awt.Color(255, 255, 255));
@@ -236,7 +237,7 @@ public class Home extends javax.swing.JFrame {
     
     
     public void tableReportListAdmin(ArrayList<Problem> p) {
-        Problem pro = new Problem();
+        
         JPanel[] jPanelListReportSmall = new JPanel[p.size()];
         JLabel[] jLabelDetailReport = new JLabel[p.size()];
         JLabel[] jLabelStatus = new JLabel[p.size()];
@@ -245,6 +246,7 @@ public class Home extends javax.swing.JFrame {
         int y = 30;
 
         for (int i = 0; i < p.size(); i++) {
+            Problem pro = new Problem();
             jPanelListReportSmall[i] = new JPanel();
             jPanelListReportSmall[i].setBackground(new java.awt.Color(255, 255, 255));
             jPanelListReportSmall[i].setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -295,7 +297,7 @@ public class Home extends javax.swing.JFrame {
             jPanelListReportSmall[i].add(jButtonSave[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, -1, -1));
 
             jPanelListReportAdmin.add(jPanelListReportSmall[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y, 480, 160));
-            y += 100;
+            y += 190;
             jPanelReportAdmin.add(jScrollPaneReportAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
         }
         jScrollPaneReportAdmin.setViewportView(jPanelListReportAdmin);
