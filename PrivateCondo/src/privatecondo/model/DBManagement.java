@@ -146,7 +146,7 @@ public class DBManagement {
             " JOIN users u ON u.userid=p.user_id" +
             " LEFT JOIN problemhandler ph ON ph.problem_id=p.problem_id" +
             " LEFT JOIN problemstatus ps ON ph.problemstatus_id=ps.problemstatus_id" +
-            " ph.problem_id is null OR WHERE userId="+userId+" AND (p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id)"); 
+            " WHERE userId="+userId+" AND (ph.problem_id is null OR(p.problem_id,handleDate) in (SELECT problem_id,max(handleDate) FROM problemhandler GROUP BY problem_id))"); 
         
        
         while(rs.next()){
@@ -317,6 +317,7 @@ public class DBManagement {
         DBManagement dbm = new DBManagement();
         dbm.createConnection();
         User activeuser = dbm.login("jillion", "1234");
+        System.out.println(dbm.queryProblemByUser(2));
 //        Problem  p = new Problem();
 //        p.setProblemId(1);
 //        dbm.updateStatusProblem(p, "Done");
