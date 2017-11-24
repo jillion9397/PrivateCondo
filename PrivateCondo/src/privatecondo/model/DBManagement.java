@@ -181,6 +181,15 @@ public class DBManagement {
         return count;
 //        SELECT * FROM problems p WHERE problem_id NOT IN (SELECT problem_id FROM problemhandler ph WHERE p.problem_id = ph.problem_id)
     }
+    
+    public void updateStatusProblem(Problem p,int statusid,int adminId) throws SQLException{
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Statement stm=null;
+        stm = conn.createStatement();
+        stm.execute("insert into problemhandler (problem_id,problemstatus_id,admin_id,handleDate)"
+                + " value ("+p.getProblemId()+","+statusid+","+adminId+",'"+sdf.format(new Date())+"')");
+    }
+    
     public void addNews(News n,int ancId) throws SQLException{
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -308,7 +317,11 @@ public class DBManagement {
         DBManagement dbm = new DBManagement();
         dbm.createConnection();
         User activeuser = dbm.login("jillion", "1234");
-        System.out.println(dbm.queryWorkTime());
+//        Problem  p = new Problem();
+//        p.setProblemId(1);
+//        dbm.updateStatusProblem(p, "Done");
+//        System.out.println(dbm.queryReserve());
+        
 //        Room r = new Room();
 //        r.setRoomId(13);
 //        User usr = new User();

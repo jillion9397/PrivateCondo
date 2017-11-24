@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import privatecondo.controller.ComboBoxStatusActionListener;
 import privatecondo.model.DBManagement;
 import privatecondo.model.News;
 import privatecondo.model.Problem;
@@ -30,6 +31,7 @@ public class Home extends javax.swing.JFrame {
 
     private User activeUser;
     private DBManagement dbm;
+    private int cb = 0;
 
     /**
      * Creates new form Home
@@ -223,14 +225,24 @@ public class Home extends javax.swing.JFrame {
         jScrollPaneListProblem.setViewportView(jPanelListProblem);
     }
 
+    public int getCb() {
+        return cb;
+    }
+
+    public void setCb(int cb) {
+        this.cb = cb;
+    }
+
+    
+    
     public void tableReportListAdmin(ArrayList<Problem> p) {
-        System.out.println("Size: "+p.size());
+        Problem pro = new Problem();
         JPanel[] jPanelListReportSmall = new JPanel[p.size()];
         JLabel[] jLabelDetailReport = new JLabel[p.size()];
         JLabel[] jLabelStatus = new JLabel[p.size()];
         JComboBox[] jComboBoxStatus = new JComboBox[p.size()];
         JButton[] jButtonSave = new JButton[p.size()];
-        int y=30;
+        int y = 30;
 
         for (int i = 0; i < p.size(); i++) {
             jPanelListReportSmall[i] = new JPanel();
@@ -241,31 +253,73 @@ public class Home extends javax.swing.JFrame {
             jLabelDetailReport[i].setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
             jLabelDetailReport[i].setForeground(new java.awt.Color(71, 82, 94));
             String report = new String();
-            report = "<html><body>"+p.get(i).getReporter().getFname() + "      วันที่แจ้ง : "+p.get(i).getReportDate()
-                    +"<br>Topic: "+p.get(i).getTopic()+"<br>Description: "+p.get(i).getDescription()+"</body></html>";
+            report = "<html><body>" + p.get(i).getReporter().getFname() + "      วันที่แจ้ง : " + p.get(i).getReportDate()
+                    + "<br>Topic: " + p.get(i).getTopic() + "<br>Description: " + p.get(i).getDescription() + "</body></html>";
             jLabelDetailReport[i].setText(report);
             jPanelListReportSmall[i].add(jLabelDetailReport[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 430, 80));
 
-            jLabelStatus[i] = new JLabel(); 
+            jLabelStatus[i] = new JLabel();
             jLabelStatus[i].setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
             jLabelStatus[i].setForeground(new java.awt.Color(71, 82, 94));
             jLabelStatus[i].setText("Status : ");
             jPanelListReportSmall[i].add(jLabelStatus[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
-
-            jComboBoxStatus[i] = new JComboBox(); 
+            
+            
+            jComboBoxStatus[i] = new JComboBox();
             jComboBoxStatus[i].setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
-            jComboBoxStatus[i].setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Not done", "In processing", "Done"}));
+            jComboBoxStatus[i].setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Not Done", "In Processing", "Done"}));
+            jComboBoxStatus[i].setSelectedIndex(p.get(i).getStatusType());
+            jComboBoxStatus[i].addActionListener(new ComboBoxStatusActionListener(jComboBoxStatus[i],this));
+
+            
             jPanelListReportSmall[i].add(jComboBoxStatus[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 210, 30));
+
+            pro.setProblemId(p.get(i).getProblemId());
 
             jButtonSave[i] = new JButton();
             jButtonSave[i].setText("Save");
+            jButtonSave[i].addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    
+                    System.out.println("cb: " + cb);
+                    try {
+                        editStatus(pro, cb);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+
             jPanelListReportSmall[i].add(jButtonSave[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, -1, -1));
 
             jPanelListReportAdmin.add(jPanelListReportSmall[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y, 480, 160));
-            y+=100;
+            y += 100;
             jPanelReportAdmin.add(jScrollPaneReportAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
         }
         jScrollPaneReportAdmin.setViewportView(jPanelListReportAdmin);
+    }
+
+    private void editStatus(Problem p, int status) throws ClassNotFoundException, SQLException {
+        if (status == 0) {
+            System.out.println("ไม่สามารถทำได้");
+        } else {
+            System.out.println(status);
+            try {
+                // TODO add your handling code here:
+                dbm.createConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dbm.updateStatusProblem(p,status,activeUser.getUserId());
+            try {
+                dbm.disconnect();
+            } catch (SQLException ex) {
+                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }
 
     /**
