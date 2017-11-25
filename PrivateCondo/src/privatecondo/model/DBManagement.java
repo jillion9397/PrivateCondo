@@ -55,9 +55,10 @@ public class DBManagement {
         
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT * FROM users u"
-                + " JOIN usertypes ut ON u.usertype_id=ut.usertype_id WHERE username='"+username+"'"); 
+                + " JOIN authentication a ON a.user_id=u.userId"
+                + " JOIN usertypes ut ON u.usertype_id=ut.usertype_id"
+                + " WHERE username='"+username+"' AND password='"+password+"'"); 
         if(rs.next()){
-            if(password.equals(rs.getString("password"))){ 
                 user=new User(); 
                 user.setUserId(rs.getInt("userID")); 
                 user.setUserType(rs.getInt("userType_Id")); 
@@ -70,8 +71,6 @@ public class DBManagement {
                 user.setUserTypeStr(rs.getString("ut.userType_name"));
                 user.setRoomOwn(queryRoomOwn(user));
                 user.setRoomLive(queryRoomlive(user));
-                
-            } 
         }
         return user;
     }
