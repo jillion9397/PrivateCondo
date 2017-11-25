@@ -217,6 +217,13 @@ public class DBManagement {
         
     }
     
+    public void deleteNews(News news) throws SQLException{
+        Statement stm=null;
+        stm = conn.createStatement();
+        stm.execute("DELETE FROM News" +
+            " WHERE news_id="+news.getNewsId());
+    }
+    
     public void addProblem(Problem p) throws SQLException{
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         
