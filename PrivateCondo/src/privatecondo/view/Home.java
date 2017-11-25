@@ -92,13 +92,14 @@ public class Home extends javax.swing.JFrame {
     }
 
     public void tableListNewsAdmin(ArrayList<News> news) {
-        
+
         JPanel[] jPanelListsNewAdmin = new JPanel[news.size()];
         JLabel[] jLabelTopicNewAdmin = new JLabel[news.size()];
         JTextArea[] jTextAreaDetailNewAdmin = new JTextArea[news.size()];
         JLabel[] jLabelPicSettingAdmin = new JLabel[news.size()];
         JButton[] jButtonEditNewsAdmin = new JButton[news.size()];
         JScrollPane[] jScrollPaneTextFile = new JScrollPane[news.size()];
+        JButton[] jButtonDeleteNewsAdmin = new JButton[news.size()];
         int y = 20;
 
         for (int i = 0; i < news.size(); i++) {
@@ -135,6 +136,21 @@ public class Home extends javax.swing.JFrame {
             jButtonEditNewsAdmin[i] = new JButton();
             jButtonEditNewsAdmin[i].setText("Edit");
             jPanelListsNewAdmin[i].add(jButtonEditNewsAdmin[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, -1));
+            jButtonEditNewsAdmin[i].addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    setPanel();
+                    editNews(n);
+                }
+            });
+
+            jButtonDeleteNewsAdmin[i] = new JButton();
+            jButtonDeleteNewsAdmin[i].setText("Delete");
+            jPanelListsNewAdmin[i].add(jButtonDeleteNewsAdmin[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
+            jButtonDeleteNewsAdmin[i].addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    deleteNews(n);
+                }
+            });
 
             n.setTopic(news.get(i).getTopic());
             n.setDescription(news.get(i).getDescription());
@@ -144,17 +160,47 @@ public class Home extends javax.swing.JFrame {
             jPanelListNewsAdmin.add(jPanelListsNewAdmin[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y, 500, 140));
             y += 160;
             jPanelNewAdmin.add(jScrollPaneNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 320));
-
-            jButtonEditNewsAdmin[i].addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    setPanel();
-                    editNews(n);
-                }
-            });
-
         }
-
         jScrollPaneNewAdmin.setViewportView(jPanelListNewsAdmin);
+    }
+
+    public void deleteNews(News news) {
+        jTextFieldDeleteTopicNew.setText(news.getTopic());
+        jTextAreaNewsContentNew.setText(news.getDescription());
+        homePrivateCondo.setVisible(false);
+        adminPrivateCondo.setVisible(true);
+        userPrivateCondo.setVisible(false);
+        login.setVisible(false);
+        jPanelAdmin.setVisible(true);
+        jPanelEditNew.setVisible(false);
+        jPanelAddNew.setVisible(false);
+        jPanelNewAdmin.setVisible(false);
+        jPanelDeleteNews.setVisible(true);
+        jPanelReportAdmin.setVisible(false);
+        jPanelRoomServiceAdmin.setVisible(false);
+        jPanelLeftMenuAdmin.setVisible(true);
+        jPanelHeadMenuAdmin.setVisible(true);
+        jLabelNewAdmin.setVisible(false);
+        jLabelAddNew.setVisible(false);
+        jLabelDeleteNew.setVisible(true);
+        jLabelEditNew.setVisible(false);
+        jLabelReport.setVisible(false);
+        jLabelRoomSVadmin.setVisible(false);
+
+        jButtonDeleteConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    dbm.createConnection();
+                    dbm.deleteNews(news);
+                    dbm.disconnect();
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
     }
 
     public void editNews(News news) {
@@ -191,12 +237,14 @@ public class Home extends javax.swing.JFrame {
         jPanelEditNew.setVisible(true);
         jPanelAddNew.setVisible(false);
         jPanelNewAdmin.setVisible(false);
+        jPanelDeleteNews.setVisible(false);
         jPanelReportAdmin.setVisible(false);
         jPanelRoomServiceAdmin.setVisible(false);
         jPanelLeftMenuAdmin.setVisible(true);
         jPanelHeadMenuAdmin.setVisible(true);
         jLabelNewAdmin.setVisible(false);
         jLabelAddNew.setVisible(false);
+        jLabelDeleteNew.setVisible(false);
         jLabelEditNew.setVisible(true);
         jLabelReport.setVisible(false);
         jLabelRoomSVadmin.setVisible(false);
@@ -234,10 +282,8 @@ public class Home extends javax.swing.JFrame {
         this.cb = cb;
     }
 
-    
-    
     public void tableReportListAdmin(ArrayList<Problem> p) {
-        
+
         JPanel[] jPanelListReportSmall = new JPanel[p.size()];
         JLabel[] jLabelDetailReport = new JLabel[p.size()];
         JLabel[] jLabelStatus = new JLabel[p.size()];
@@ -265,15 +311,13 @@ public class Home extends javax.swing.JFrame {
             jLabelStatus[i].setForeground(new java.awt.Color(71, 82, 94));
             jLabelStatus[i].setText("Status : ");
             jPanelListReportSmall[i].add(jLabelStatus[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
-            
-            
+
             jComboBoxStatus[i] = new JComboBox();
             jComboBoxStatus[i].setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
             jComboBoxStatus[i].setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Not Done", "In Processing", "Done"}));
             jComboBoxStatus[i].setSelectedIndex(p.get(i).getStatusType());
-            jComboBoxStatus[i].addActionListener(new ComboBoxStatusActionListener(jComboBoxStatus[i],this));
+            jComboBoxStatus[i].addActionListener(new ComboBoxStatusActionListener(jComboBoxStatus[i], this));
 
-            
             jPanelListReportSmall[i].add(jComboBoxStatus[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 210, 30));
 
             pro.setProblemId(p.get(i).getProblemId());
@@ -282,7 +326,7 @@ public class Home extends javax.swing.JFrame {
             jButtonSave[i].setText("Save");
             jButtonSave[i].addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    
+
                     System.out.println("cb: " + cb);
                     try {
                         editStatus(pro, cb);
@@ -298,7 +342,6 @@ public class Home extends javax.swing.JFrame {
 
             jPanelListReportAdmin.add(jPanelListReportSmall[i], new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y, 480, 160));
             y += 190;
-            jPanelReportAdmin.add(jScrollPaneReportAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
         }
         jScrollPaneReportAdmin.setViewportView(jPanelListReportAdmin);
     }
@@ -314,7 +357,7 @@ public class Home extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
             }
-            dbm.updateStatusProblem(p,status,activeUser.getUserId());
+            dbm.updateStatusProblem(p, status, activeUser.getUserId());
             try {
                 dbm.disconnect();
             } catch (SQLException ex) {
@@ -342,6 +385,7 @@ public class Home extends javax.swing.JFrame {
         jLabelUserProfileAdmin = new javax.swing.JLabel();
         jButtonLogoutAdmin = new javax.swing.JButton();
         jLabelNewAdmin = new javax.swing.JLabel();
+        jLabelDeleteNew = new javax.swing.JLabel();
         jLabelAddNew = new javax.swing.JLabel();
         jLabelEditNew = new javax.swing.JLabel();
         jLabelReport = new javax.swing.JLabel();
@@ -349,17 +393,19 @@ public class Home extends javax.swing.JFrame {
         userTypeAdmin = new javax.swing.JLabel();
         userNameAdmin = new javax.swing.JLabel();
         jPanelAdmin = new javax.swing.JPanel();
+        jPanelDeleteNews = new javax.swing.JPanel();
+        jLabelDeteteNewTopic = new javax.swing.JLabel();
+        jLabelDeleteNewDescription = new javax.swing.JLabel();
+        jTextFieldDeleteTopicNew = new javax.swing.JTextField();
+        jScrollPaneNewsDes = new javax.swing.JScrollPane();
+        jTextAreaNewsContentNew = new javax.swing.JTextArea();
+        jButtonDeleteConfirm = new javax.swing.JButton();
+        jButtonPreviousToNewAdmin = new javax.swing.JButton();
         jPanelReportAdmin = new javax.swing.JPanel();
         jScrollPaneReportAdmin = new javax.swing.JScrollPane();
         jPanelListReportAdmin = new javax.swing.JPanel();
-        jPanelEditNew = new javax.swing.JPanel();
-        jLabelEditNewTopic = new javax.swing.JLabel();
-        jLabelEditNewDescription = new javax.swing.JLabel();
-        jTextFieldEditTopicNew = new javax.swing.JTextField();
-        jScrollPaneReportDes2 = new javax.swing.JScrollPane();
-        jTextAreaEditContentNew = new javax.swing.JTextArea();
-        jButtonEditNews = new javax.swing.JButton();
-        jButtonPreviousToNews = new javax.swing.JButton();
+        jLabelNotDo = new javax.swing.JLabel();
+        jLabelCountNotDo = new javax.swing.JLabel();
         jPanelNewAdmin = new javax.swing.JPanel();
         jScrollPaneNewAdmin = new javax.swing.JScrollPane();
         jPanelListNewsAdmin = new javax.swing.JPanel();
@@ -371,6 +417,14 @@ public class Home extends javax.swing.JFrame {
         jScrollPaneReportDes1 = new javax.swing.JScrollPane();
         jTextAreaContentNew = new javax.swing.JTextArea();
         jButtonAddNews = new javax.swing.JButton();
+        jPanelEditNew = new javax.swing.JPanel();
+        jLabelEditNewTopic = new javax.swing.JLabel();
+        jLabelEditNewDescription = new javax.swing.JLabel();
+        jTextFieldEditTopicNew = new javax.swing.JTextField();
+        jScrollPaneReportDes2 = new javax.swing.JScrollPane();
+        jTextAreaEditContentNew = new javax.swing.JTextArea();
+        jButtonEditNews = new javax.swing.JButton();
+        jButtonPreviousToNews = new javax.swing.JButton();
         jPanelRoomServiceAdmin = new javax.swing.JPanel();
         userPrivateCondo = new javax.swing.JPanel();
         jPanelHeadMenu = new javax.swing.JPanel();
@@ -387,6 +441,9 @@ public class Home extends javax.swing.JFrame {
         jButtonHome = new javax.swing.JButton();
         jButtonReport = new javax.swing.JButton();
         user = new javax.swing.JPanel();
+        jPanelNewsHome = new javax.swing.JPanel();
+        jScrollPaneNewUser = new javax.swing.JScrollPane();
+        jPanelDynamicNewUser = new javax.swing.JPanel();
         jPanelReport = new javax.swing.JPanel();
         jLabelReportDescription = new javax.swing.JLabel();
         jLabelReportTopic = new javax.swing.JLabel();
@@ -398,9 +455,6 @@ public class Home extends javax.swing.JFrame {
         jPanelReportProList = new javax.swing.JPanel();
         jScrollPaneListProblem = new javax.swing.JScrollPane();
         jPanelListProblem = new javax.swing.JPanel();
-        jPanelNewsHome = new javax.swing.JPanel();
-        jScrollPaneNewUser = new javax.swing.JScrollPane();
-        jPanelDynamicNewUser = new javax.swing.JPanel();
         jPanelRoomSV = new javax.swing.JPanel();
         jLabelTime = new javax.swing.JLabel();
         jComboBoxDate = new javax.swing.JComboBox<>();
@@ -489,6 +543,11 @@ public class Home extends javax.swing.JFrame {
         jLabelNewAdmin.setText("NEWS");
         jPanelHeadMenuAdmin.add(jLabelNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
+        jLabelDeleteNew.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
+        jLabelDeleteNew.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDeleteNew.setText("DELETE NEWS");
+        jPanelHeadMenuAdmin.add(jLabelDeleteNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
         jLabelAddNew.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLabelAddNew.setForeground(new java.awt.Color(255, 255, 255));
         jLabelAddNew.setText("ADD NEWS");
@@ -525,6 +584,41 @@ public class Home extends javax.swing.JFrame {
 
         jPanelAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanelDeleteNews.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelDeleteNews.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelDeteteNewTopic.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelDeteteNewTopic.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelDeteteNewTopic.setText("Topic");
+        jPanelDeleteNews.add(jLabelDeteteNewTopic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabelDeleteNewDescription.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelDeleteNewDescription.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelDeleteNewDescription.setText("Description");
+        jPanelDeleteNews.add(jLabelDeleteNewDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        jPanelDeleteNews.add(jTextFieldDeleteTopicNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 350, 30));
+
+        jTextAreaNewsContentNew.setColumns(20);
+        jTextAreaNewsContentNew.setRows(5);
+        jScrollPaneNewsDes.setViewportView(jTextAreaNewsContentNew);
+
+        jPanelDeleteNews.add(jScrollPaneNewsDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 350, 210));
+
+        jButtonDeleteConfirm.setText("Confirm");
+        jPanelDeleteNews.add(jButtonDeleteConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
+
+        jButtonPreviousToNewAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/privatecondo/view/Picture/previous.png"))); // NOI18N
+        jButtonPreviousToNewAdmin.setText("Previous");
+        jButtonPreviousToNewAdmin.setContentAreaFilled(false);
+        jButtonPreviousToNewAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPreviousToNewAdminActionPerformed(evt);
+            }
+        });
+        jPanelDeleteNews.add(jButtonPreviousToNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
+
+        jPanelAdmin.add(jPanelDeleteNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
         jPanelReportAdmin.setBackground(new java.awt.Color(130, 187, 178));
         jPanelReportAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -532,45 +626,18 @@ public class Home extends javax.swing.JFrame {
         jPanelListReportAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jScrollPaneReportAdmin.setViewportView(jPanelListReportAdmin);
 
-        jPanelReportAdmin.add(jScrollPaneReportAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+        jPanelReportAdmin.add(jScrollPaneReportAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 330));
+
+        jLabelNotDo.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
+        jLabelNotDo.setForeground(new java.awt.Color(71, 82, 94));
+        jLabelNotDo.setText("จำนวนปัญหาที่ยังไม่ได้จัดการ : ");
+        jPanelReportAdmin.add(jLabelNotDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, 20));
+
+        jLabelCountNotDo.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
+        jLabelCountNotDo.setForeground(new java.awt.Color(51, 51, 51));
+        jPanelReportAdmin.add(jLabelCountNotDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 200, 20));
 
         jPanelAdmin.add(jPanelReportAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
-
-        jPanelEditNew.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelEditNew.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelEditNewTopic.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
-        jLabelEditNewTopic.setForeground(new java.awt.Color(43, 64, 57));
-        jLabelEditNewTopic.setText("Topic");
-        jPanelEditNew.add(jLabelEditNewTopic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
-
-        jLabelEditNewDescription.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
-        jLabelEditNewDescription.setForeground(new java.awt.Color(43, 64, 57));
-        jLabelEditNewDescription.setText("Description");
-        jPanelEditNew.add(jLabelEditNewDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
-        jPanelEditNew.add(jTextFieldEditTopicNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 350, 30));
-
-        jTextAreaEditContentNew.setColumns(20);
-        jTextAreaEditContentNew.setRows(5);
-        jScrollPaneReportDes2.setViewportView(jTextAreaEditContentNew);
-
-        jPanelEditNew.add(jScrollPaneReportDes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 350, 210));
-
-        jButtonEditNews.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonEditNews.setText("EDIT");
-        jPanelEditNew.add(jButtonEditNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
-
-        jButtonPreviousToNews.setIcon(new javax.swing.ImageIcon(getClass().getResource("/privatecondo/view/Picture/previous.png"))); // NOI18N
-        jButtonPreviousToNews.setText("Previous");
-        jButtonPreviousToNews.setContentAreaFilled(false);
-        jButtonPreviousToNews.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPreviousToNewsActionPerformed(evt);
-            }
-        });
-        jPanelEditNew.add(jButtonPreviousToNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
-
-        jPanelAdmin.add(jPanelEditNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
 
         jPanelNewAdmin.setBackground(new java.awt.Color(130, 187, 178));
         jPanelNewAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -637,6 +704,42 @@ public class Home extends javax.swing.JFrame {
         jPanelAddNew.add(jButtonAddNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
 
         jPanelAdmin.add(jPanelAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
+        jPanelEditNew.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelEditNew.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelEditNewTopic.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelEditNewTopic.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelEditNewTopic.setText("Topic");
+        jPanelEditNew.add(jLabelEditNewTopic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabelEditNewDescription.setFont(new java.awt.Font("Quark", 1, 22)); // NOI18N
+        jLabelEditNewDescription.setForeground(new java.awt.Color(43, 64, 57));
+        jLabelEditNewDescription.setText("Description");
+        jPanelEditNew.add(jLabelEditNewDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        jPanelEditNew.add(jTextFieldEditTopicNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 350, 30));
+
+        jTextAreaEditContentNew.setColumns(20);
+        jTextAreaEditContentNew.setRows(5);
+        jScrollPaneReportDes2.setViewportView(jTextAreaEditContentNew);
+
+        jPanelEditNew.add(jScrollPaneReportDes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 350, 210));
+
+        jButtonEditNews.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonEditNews.setText("EDIT");
+        jPanelEditNew.add(jButtonEditNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 110, 30));
+
+        jButtonPreviousToNews.setIcon(new javax.swing.ImageIcon(getClass().getResource("/privatecondo/view/Picture/previous.png"))); // NOI18N
+        jButtonPreviousToNews.setText("Previous");
+        jButtonPreviousToNews.setContentAreaFilled(false);
+        jButtonPreviousToNews.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPreviousToNewsActionPerformed(evt);
+            }
+        });
+        jPanelEditNew.add(jButtonPreviousToNews, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+
+        jPanelAdmin.add(jPanelEditNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
 
         jPanelRoomServiceAdmin.setBackground(new java.awt.Color(130, 187, 178));
         jPanelRoomServiceAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -733,6 +836,17 @@ public class Home extends javax.swing.JFrame {
 
         user.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanelNewsHome.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelNewsHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelDynamicNewUser.setBackground(new java.awt.Color(130, 187, 178));
+        jPanelDynamicNewUser.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPaneNewUser.setViewportView(jPanelDynamicNewUser);
+
+        jPanelNewsHome.add(jScrollPaneNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
+
+        user.add(jPanelNewsHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
+
         jPanelReport.setBackground(new java.awt.Color(130, 187, 178));
         jPanelReport.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -794,17 +908,6 @@ public class Home extends javax.swing.JFrame {
         jPanelReportProList.add(jScrollPaneListProblem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 330));
 
         user.add(jPanelReportProList, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
-
-        jPanelNewsHome.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelNewsHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelDynamicNewUser.setBackground(new java.awt.Color(130, 187, 178));
-        jPanelDynamicNewUser.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jScrollPaneNewUser.setViewportView(jPanelDynamicNewUser);
-
-        jPanelNewsHome.add(jScrollPaneNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 370));
-
-        user.add(jPanelNewsHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 550, 370));
 
         jPanelRoomSV.setBackground(new java.awt.Color(130, 187, 178));
         jPanelRoomSV.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1075,12 +1178,14 @@ public class Home extends javax.swing.JFrame {
         jPanelEditNew.setVisible(false);
         jPanelAddNew.setVisible(false);
         jPanelNewAdmin.setVisible(false);
+        jPanelDeleteNews.setVisible(false);
         jPanelReportAdmin.setVisible(false);
         jPanelRoomServiceAdmin.setVisible(true);
         jPanelLeftMenuAdmin.setVisible(true);
         jPanelHeadMenuAdmin.setVisible(true);
         jLabelNewAdmin.setVisible(false);
         jLabelAddNew.setVisible(false);
+        jLabelDeleteNew.setVisible(false);
         jLabelEditNew.setVisible(false);
         jLabelReport.setVisible(false);
         jLabelRoomSVadmin.setVisible(true);
@@ -1096,12 +1201,14 @@ public class Home extends javax.swing.JFrame {
         jPanelEditNew.setVisible(false);
         jPanelAddNew.setVisible(false);
         jPanelNewAdmin.setVisible(true);
+        jPanelDeleteNews.setVisible(false);
         jPanelReportAdmin.setVisible(false);
         jPanelRoomServiceAdmin.setVisible(false);
         jPanelLeftMenuAdmin.setVisible(true);
         jPanelHeadMenuAdmin.setVisible(true);
         jLabelNewAdmin.setVisible(true);
         jLabelAddNew.setVisible(false);
+        jLabelDeleteNew.setVisible(false);
         jLabelEditNew.setVisible(false);
         jLabelReport.setVisible(false);
         jLabelRoomSVadmin.setVisible(false);
@@ -1117,18 +1224,21 @@ public class Home extends javax.swing.JFrame {
         jPanelEditNew.setVisible(false);
         jPanelAddNew.setVisible(false);
         jPanelNewAdmin.setVisible(false);
+        jPanelDeleteNews.setVisible(false);
         jPanelReportAdmin.setVisible(true);
         jPanelRoomServiceAdmin.setVisible(false);
         jPanelLeftMenuAdmin.setVisible(true);
         jPanelHeadMenuAdmin.setVisible(true);
         jLabelNewAdmin.setVisible(false);
         jLabelAddNew.setVisible(false);
+        jLabelDeleteNew.setVisible(false);
         jLabelEditNew.setVisible(false);
         jLabelReport.setVisible(true);
         jLabelRoomSVadmin.setVisible(false);
         try {
             dbm.createConnection();
             tableReportListAdmin(dbm.queryProblem());
+            jLabelCountNotDo.setText("" + dbm.countNotDoneProblem());
             dbm.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
@@ -1218,12 +1328,14 @@ public class Home extends javax.swing.JFrame {
                 jPanelEditNew.setVisible(false);
                 jPanelAddNew.setVisible(false);
                 jPanelNewAdmin.setVisible(true);
+                jPanelDeleteNews.setVisible(false);
                 jPanelReportAdmin.setVisible(false);
                 jPanelRoomServiceAdmin.setVisible(false);
                 jPanelLeftMenuAdmin.setVisible(true);
                 jPanelHeadMenuAdmin.setVisible(true);
                 jLabelNewAdmin.setVisible(true);
                 jLabelAddNew.setVisible(false);
+                jLabelDeleteNew.setVisible(false);
                 jLabelEditNew.setVisible(false);
                 jLabelReport.setVisible(false);
                 jLabelRoomSVadmin.setVisible(false);
@@ -1320,12 +1432,14 @@ public class Home extends javax.swing.JFrame {
         jPanelEditNew.setVisible(false);
         jPanelAddNew.setVisible(true);
         jPanelNewAdmin.setVisible(false);
+        jPanelDeleteNews.setVisible(false);
         jPanelReportAdmin.setVisible(false);
         jPanelRoomServiceAdmin.setVisible(false);
         jPanelLeftMenuAdmin.setVisible(true);
         jPanelHeadMenuAdmin.setVisible(true);
         jLabelNewAdmin.setVisible(false);
         jLabelAddNew.setVisible(true);
+        jLabelDeleteNew.setVisible(false);
         jLabelEditNew.setVisible(false);
         jLabelReport.setVisible(false);
         jLabelRoomSVadmin.setVisible(false);
@@ -1377,12 +1491,14 @@ public class Home extends javax.swing.JFrame {
         jPanelEditNew.setVisible(false);
         jPanelAddNew.setVisible(false);
         jPanelNewAdmin.setVisible(true);
+        jPanelDeleteNews.setVisible(false);
         jPanelReportAdmin.setVisible(false);
         jPanelRoomServiceAdmin.setVisible(false);
         jPanelLeftMenuAdmin.setVisible(true);
         jPanelHeadMenuAdmin.setVisible(true);
         jLabelNewAdmin.setVisible(true);
         jLabelAddNew.setVisible(false);
+        jLabelDeleteNew.setVisible(false);
         jLabelEditNew.setVisible(false);
         jLabelReport.setVisible(false);
         jLabelRoomSVadmin.setVisible(false);
@@ -1391,8 +1507,43 @@ public class Home extends javax.swing.JFrame {
 
     private void jComboBoxDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDateActionPerformed
         System.out.println("hello");
-        
+
     }//GEN-LAST:event_jComboBoxDateActionPerformed
+
+    private void jButtonPreviousToNewAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPreviousToNewAdminActionPerformed
+        // TODO add your handling code here:
+        jPanelNewAdmin.removeAll();
+        try {
+            dbm.createConnection();
+            tableListNewsAdmin(dbm.queryNews());
+            dbm.disconnect();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jPanelNewAdmin.revalidate();
+        jPanelNewAdmin.repaint();
+        homePrivateCondo.setVisible(false);
+        adminPrivateCondo.setVisible(true);
+        userPrivateCondo.setVisible(false);
+        login.setVisible(false);
+        jPanelAdmin.setVisible(true);
+        jPanelEditNew.setVisible(false);
+        jPanelAddNew.setVisible(false);
+        jPanelNewAdmin.setVisible(true);
+        jPanelDeleteNews.setVisible(false);
+        jPanelReportAdmin.setVisible(false);
+        jPanelRoomServiceAdmin.setVisible(false);
+        jPanelLeftMenuAdmin.setVisible(true);
+        jPanelHeadMenuAdmin.setVisible(true);
+        jLabelNewAdmin.setVisible(true);
+        jLabelAddNew.setVisible(false);
+        jLabelDeleteNew.setVisible(false);
+        jLabelEditNew.setVisible(false);
+        jLabelReport.setVisible(false);
+        jLabelRoomSVadmin.setVisible(false);
+    }//GEN-LAST:event_jButtonPreviousToNewAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1435,12 +1586,14 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddNews;
     private javax.swing.JButton jButtonAddNewsAdmin;
+    private javax.swing.JButton jButtonDeleteConfirm;
     private javax.swing.JButton jButtonEditNews;
     private javax.swing.JButton jButtonHome;
     private javax.swing.JButton jButtonHomeAdmin;
     private javax.swing.JButton jButtonListReport;
     private javax.swing.JButton jButtonLogin;
     private javax.swing.JButton jButtonLogoutAdmin;
+    private javax.swing.JButton jButtonPreviousToNewAdmin;
     private javax.swing.JButton jButtonPreviousToNews;
     private javax.swing.JButton jButtonPreviousToRoomSV;
     private javax.swing.JButton jButtonReport;
@@ -1452,8 +1605,12 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxDate;
     private javax.swing.JComboBox<String> jComboBoxTime;
     private javax.swing.JLabel jLabelAddNew;
+    private javax.swing.JLabel jLabelCountNotDo;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelDateSelect;
+    private javax.swing.JLabel jLabelDeleteNew;
+    private javax.swing.JLabel jLabelDeleteNewDescription;
+    private javax.swing.JLabel jLabelDeteteNewTopic;
     private javax.swing.JLabel jLabelEditNew;
     private javax.swing.JLabel jLabelEditNewDescription;
     private javax.swing.JLabel jLabelEditNewTopic;
@@ -1462,6 +1619,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNewAdmin;
     private javax.swing.JLabel jLabelNewDescription;
     private javax.swing.JLabel jLabelNewTopic;
+    private javax.swing.JLabel jLabelNotDo;
     private javax.swing.JLabel jLabelPicCondo;
     private javax.swing.JLabel jLabelReport;
     private javax.swing.JLabel jLabelReport1;
@@ -1475,6 +1633,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelUserProfileAdmin;
     private javax.swing.JPanel jPanelAddNew;
     private javax.swing.JPanel jPanelAdmin;
+    private javax.swing.JPanel jPanelDeleteNews;
     private javax.swing.JPanel jPanelDynamicNewUser;
     private javax.swing.JPanel jPanelEditNew;
     private javax.swing.JPanel jPanelFooter;
@@ -1499,6 +1658,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneListProblem;
     private javax.swing.JScrollPane jScrollPaneNewAdmin;
     private javax.swing.JScrollPane jScrollPaneNewUser;
+    private javax.swing.JScrollPane jScrollPaneNewsDes;
     private javax.swing.JScrollPane jScrollPaneReportAdmin;
     private javax.swing.JScrollPane jScrollPaneReportDes;
     private javax.swing.JScrollPane jScrollPaneReportDes1;
@@ -1507,6 +1667,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaContentNew;
     private javax.swing.JTextArea jTextAreaDesReport;
     private javax.swing.JTextArea jTextAreaEditContentNew;
+    private javax.swing.JTextArea jTextAreaNewsContentNew;
+    private javax.swing.JTextField jTextFieldDeleteTopicNew;
     private javax.swing.JTextField jTextFieldEditTopicNew;
     private javax.swing.JTextField jTextFieldTopic;
     private javax.swing.JTextField jTextFieldTopicNew;
