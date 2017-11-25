@@ -1,4 +1,12 @@
-﻿
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 25, 2017 at 11:33 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -11,8 +19,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `PrivateCondo`
+-- Database: `privatecondo`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `authentication`
+--
+
+CREATE TABLE `authentication` (
+  `authId` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `authentication`
+--
+
+INSERT INTO `authentication` (`authId`, `username`, `password`, `user_id`) VALUES
+(1, 'poom029', '029', 1),
+(2, 'jillion', '1234', 2);
 
 -- --------------------------------------------------------
 
@@ -45,9 +74,9 @@ INSERT INTO `days` (`dayId`, `dayName`) VALUES
 --
 
 CREATE TABLE `news` (
-  `new_id` int(11) NOT NULL,
-  `new_topic` varchar(100) NOT NULL,
-  `new_description` varchar(300) NOT NULL,
+  `news_id` int(11) NOT NULL,
+  `news_topic` varchar(100) NOT NULL,
+  `news_description` varchar(300) NOT NULL,
   `announceDate` date NOT NULL,
   `announcer_Id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -56,8 +85,9 @@ CREATE TABLE `news` (
 -- Dumping data for table `news`
 --
 
-INSERT INTO `news` (`new_id`, `new_topic`, `new_description`, `announceDate`, `announcer_Id`) VALUES
-(1, 'ทำบุญประจำปี 2560', 'ขอเชิญผู้พักอยู่อาศัยทุกท่าน มาร่วมทำบุญประจำปี บริเวณชั้น 1 ณ วันที่ 15/11/60 เวลา 10:00 น. เป็นต้นไป', '2017-11-01', 1);
+INSERT INTO `news` (`news_id`, `news_topic`, `news_description`, `announceDate`, `announcer_Id`) VALUES
+(1, 'ทำบุญประจำปี 2560', 'ขอเชิญผู้พักอยู่อาศัยทุกท่าน มาร่วมทำบุญประจำปี บริเวณชั้น 1 ณ วันที่ 15/11/60 เวลา 10:00 น. เป็นต้นไป', '2017-11-01', 1),
+(2, 'test', 'weeeeeeeeeeeeeeeeeeeee', '2017-11-21', 1);
 
 -- --------------------------------------------------------
 
@@ -78,7 +108,12 @@ CREATE TABLE `problemhandler` (
 --
 
 INSERT INTO `problemhandler` (`handlerid`, `problem_id`, `problemstatus_id`, `admin_id`, `handleDate`) VALUES
-(1, 1, 1, 1, '2017-11-20 13:26:00');
+(1, 1, 1, 1, '2017-11-20 13:26:00'),
+(2, 2, 2, 1, '2017-11-24 18:40:52'),
+(7, 1, 2, 1, '2017-11-24 19:05:10'),
+(8, 2, 1, 1, '2017-11-24 19:32:32'),
+(9, 1, 1, 1, '2017-11-24 19:35:24'),
+(10, 2, 2, 1, '2017-11-24 19:35:41');
 
 -- --------------------------------------------------------
 
@@ -100,7 +135,8 @@ CREATE TABLE `problems` (
 --
 
 INSERT INTO `problems` (`problem_id`, `topic`, `description`, `reportDate`, `user_id`, `room_id`) VALUES
-(1, 'น้ำรั่ว', 'มีน้ำรั่วออกมาจากฝักบัวค่ะ', '2017-11-23', 2, 13);
+(1, 'น้ำรั่ว', 'มีน้ำรั่วออกมาจากฝักบัวค่ะ', '2017-11-23', 2, 13),
+(2, 'ฝ้าในห้องหลุด', 'ในห้องมีฝ้าหลุดประมาณ2-3แผ่นค่ะ', '2017-11-23', 2, 13);
 
 -- --------------------------------------------------------
 
@@ -181,26 +217,6 @@ INSERT INTO `rooms` (`roomId`, `roomNum`, `floor`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roomservicestaffs`
---
-
-CREATE TABLE `roomservicestaffs` (
-  `staffId` int(11) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
-  `staffImagePath` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `roomservicestaffs`
---
-
-INSERT INTO `roomservicestaffs` (`staffId`, `fname`, `lname`, `staffImagePath`) VALUES
-(1, 'นันทวัน', 'หอมประเสริฐสุข', 'https://scontent.fbkk12-2.fna.fbcdn.net/v/t1.0-9/19554051_1452986468102411_6585311614308058377_n.jpg?oh=50ca40ac665a8431f2c94f86f1e39925&oe=5A8AC82C');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `servicereservation`
 --
 
@@ -247,23 +263,23 @@ INSERT INTO `userroomrelation` (`relation_id`, `user_userId`, `rooms_roomId`, `r
 
 CREATE TABLE `users` (
   `userId` int(11) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
   `gender` varchar(2) NOT NULL,
   `telNo` varchar(15) DEFAULT NULL,
   `line` varchar(30) DEFAULT NULL,
-  `userType_Id` int(11) NOT NULL
+  `userType_Id` int(11) NOT NULL,
+  `userImagePath` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userId`, `username`, `password`, `fname`, `lname`, `gender`, `telNo`, `line`, `userType_Id`) VALUES
-(1, 'poom029', '029', 'กฤตพันธ์', 'พราหมณะนันทน์', 'M', '0830723684', 'poom029', 0),
-(2, 'jillion', '1234', 'จิราภา', 'ทรงโฉม', 'F', '0866168318', 'jillIsSoBeauty', 1);
+INSERT INTO `users` (`userId`, `fname`, `lname`, `gender`, `telNo`, `line`, `userType_Id`, `userImagePath`) VALUES
+(1, 'กฤตพันธ์', 'พราหมณะนันทน์', 'M', '0830723684', 'poom029', 0, NULL),
+(2, 'จิราภา', 'ทรงโฉม', 'F', '0866168318', 'jillIsSoBeauty', 1, NULL),
+(3, 'นันทวัน', 'หอมประเสริฐสุข', 'F', '0855155210', 'jan_maid', 2, 'https://scontent.fbkk12-2.fna.fbcdn.net/v/t1.0-9/19554051_1452986468102411_6585311614308058377_n.jpg?oh=50ca40ac665a8431f2c94f86f1e39925&oe=5A8AC82C');
 
 -- --------------------------------------------------------
 
@@ -282,7 +298,8 @@ CREATE TABLE `usertypes` (
 
 INSERT INTO `usertypes` (`userType_Id`, `userType_name`) VALUES
 (0, 'Admin'),
-(1, 'Customer');
+(1, 'Customer'),
+(2, 'StaffService');
 
 -- --------------------------------------------------------
 
@@ -303,14 +320,26 @@ CREATE TABLE `worktimes` (
 --
 
 INSERT INTO `worktimes` (`worktimeid`, `startTime`, `endTime`, `worktime_staffId`, `worktime_dayid`) VALUES
-(1, '09:00:00', '11:00:00', 1, 6),
-(2, '14:00:00', '16:00:00', 1, 6),
-(3, '09:00:00', '11:00:00', 1, 7),
-(4, '14:00:00', '16:00:00', 1, 7);
+(1, '09:00:00', '11:00:00', 3, 6),
+(2, '14:00:00', '16:00:00', 3, 6),
+(3, '09:00:00', '11:00:00', 3, 7),
+(4, '14:00:00', '16:00:00', 3, 7),
+(5, '10:00:00', '18:00:00', 1, 1),
+(6, '10:00:00', '18:00:00', 1, 2),
+(7, '10:00:00', '18:00:00', 1, 4),
+(8, '09:00:00', '18:00:00', 1, 3),
+(9, '10:00:00', '18:00:00', 1, 5);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `authentication`
+--
+ALTER TABLE `authentication`
+  ADD PRIMARY KEY (`authId`),
+  ADD KEY `auth_users_id_fk` (`user_id`);
 
 --
 -- Indexes for table `days`
@@ -322,7 +351,7 @@ ALTER TABLE `days`
 -- Indexes for table `news`
 --
 ALTER TABLE `news`
-  ADD PRIMARY KEY (`new_id`),
+  ADD PRIMARY KEY (`news_id`),
   ADD KEY `news_user_id` (`announcer_Id`);
 
 --
@@ -359,12 +388,6 @@ ALTER TABLE `relationtype`
 --
 ALTER TABLE `rooms`
   ADD PRIMARY KEY (`roomId`);
-
---
--- Indexes for table `roomservicestaffs`
---
-ALTER TABLE `roomservicestaffs`
-  ADD PRIMARY KEY (`staffId`);
 
 --
 -- Indexes for table `servicereservation`
@@ -409,34 +432,34 @@ ALTER TABLE `worktimes`
 --
 
 --
+-- AUTO_INCREMENT for table `authentication`
+--
+ALTER TABLE `authentication`
+  MODIFY `authId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `new_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `problemhandler`
 --
 ALTER TABLE `problemhandler`
-  MODIFY `handlerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `handlerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `problems`
 --
 ALTER TABLE `problems`
-  MODIFY `problem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `problem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
   MODIFY `roomId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=505;
-
---
--- AUTO_INCREMENT for table `roomservicestaffs`
---
-ALTER TABLE `roomservicestaffs`
-  MODIFY `staffId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `servicereservation`
@@ -454,17 +477,23 @@ ALTER TABLE `userroomrelation`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `worktimes`
 --
 ALTER TABLE `worktimes`
-  MODIFY `worktimeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `worktimeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `authentication`
+--
+ALTER TABLE `authentication`
+  ADD CONSTRAINT `auth_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`userId`) ON DELETE NO ACTION;
 
 --
 -- Constraints for table `news`
@@ -512,8 +541,8 @@ ALTER TABLE `users`
 -- Constraints for table `worktimes`
 --
 ALTER TABLE `worktimes`
-  ADD CONSTRAINT `worktime_day_id` FOREIGN KEY (`worktime_dayid`) REFERENCES `days` (`dayId`) ON DELETE NO ACTION,
-  ADD CONSTRAINT `worktime_roomserstaff_id` FOREIGN KEY (`worktime_staffId`) REFERENCES `roomservicestaffs` (`staffId`) ON DELETE NO ACTION;
+  ADD CONSTRAINT `worktime_day_id_fk` FOREIGN KEY (`worktime_dayid`) REFERENCES `days` (`dayId`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `worktime_users_id_fk` FOREIGN KEY (`worktime_staffId`) REFERENCES `users` (`userId`) ON DELETE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
